@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.ac.uniyar.SoundWiki
+Exec=/usr/bin/ru.ac.uniyar.SoundWiki
+Name=SoundWiki
+Name[ru]=SoundWiki
+
+[X-Application]
+Permissions=SecureStorage;Internet;WebView
+OrganizationName=ru.ac.uniyar
+ApplicationName=SoundWiki
+ExecDBus=/usr/bin/ru.ac.uniyar.SoundWiki
