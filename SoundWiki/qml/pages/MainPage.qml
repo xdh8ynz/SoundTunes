@@ -11,14 +11,14 @@ Page {
     // TODO: убрать
     property bool isSuccessfulSearch: true
     property var tracks: [
-    {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: ""},
-    {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: ""},
-    {id: 3, title: "All I Nead", artist: "Radiohead", genre: "Art Rock", cover: ""},
-    {id: 5, title: "Digital", artist: "Joy Division", genre: "Post-punk", cover: ""},
-    {id: 5, title: "Isolation", artist: "Joy Division", genre: "Post-punk", cover: ""},
-    {id: 6, title: "On the Level", artist: "Mac DeMarco", genre: "Psychedelic Pop", cover: ""},
-    {id: 7, title: "Chamber Of Reflection", artist: "Mac DeMarco", genre: "Synthpop", cover: ""},
-    {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
+    {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: "", albumId: 0, duration: 293050},
+    {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: "", albumId: 1, duration: 393050},
+    {id: 3, title: "All I Nead", artist: "Radiohead", genre: "Art Rock", cover: "", albumId: 2, duration: 893150},
+    {id: 5, title: "Digital", artist: "Joy Division", genre: "Post-punk", cover: "", albumId: 3, duration: 774152},
+    {id: 5, title: "Isolation", artist: "Joy Division", genre: "Post-punk", cover: "", albumId: 4, duration: 693754},
+    {id: 6, title: "On the Level", artist: "Mac DeMarco", genre: "Psychedelic Pop", cover: "", albumId: 5, duration: 897111},
+    {id: 7, title: "Chamber Of Reflection", artist: "Mac DeMarco", genre: "Synthpop", cover: "", albumId: 6, duration: 773051},
+    {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 7, duration: 394151},
     ]
     property var favouritesTracks: []
 
@@ -43,7 +43,7 @@ Page {
 
     AppBar {
         id: header
-        headerText: "SoundWiki"
+        headerText: qsTr("SoundWiki")
         background: false
         headerClickable: true
         content: [
@@ -77,7 +77,7 @@ Page {
     }
 
     SilicaListView {
-        id: resultsList
+        id: trackList
 
         anchors {
             top: searchField.bottom
@@ -91,12 +91,12 @@ Page {
         model: trackModel
 
         delegate: ListItem {
-            width: resultsList.width
+            width: trackList.width
             contentHeight: Theme.itemSizeMedium + Theme.paddingLarge * 2
 
             onClicked: {
                 pageStack.push("TrackDetailPage.qml", {
-                trackId: model.id,
+                track: model,
             })
         }
 
@@ -124,7 +124,7 @@ Page {
                 spacing: Theme.paddingSmall / 2
 
                 Label {
-                    text: model.title
+                    text: model.title ? model.title : qsTr("Unknown title")
                     font.pixelSize: Theme.fontSizeMedium
                     font.bold: true
                     color: Theme.highlightColor
@@ -133,7 +133,7 @@ Page {
                 }
 
                 Label {
-                    text: model.artist
+                    text: model.artist ? model.artist : qsTr("Unknown artist")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.primaryColor
                     truncationMode: TruncationMode.Elide
@@ -141,7 +141,7 @@ Page {
                 }
 
                 Label {
-                    text: model.genre
+                    text: model.genre ? model.artist : qsTr("Unknown genre")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                     truncationMode: TruncationMode.Elide

@@ -15,6 +15,7 @@ Page {
 
     function loadFavouritesTracks()
     {
+        isLoadingTracks = true
         timerFavourites.restart()
     }
 
@@ -57,7 +58,7 @@ Page {
                     text: qsTr("About track")
                     onClicked: {
                         pageStack.push("TrackDetailPage.qml", {
-                        trackId: model.id,
+                        track: model,
                     })
                 }
                 }
@@ -99,7 +100,7 @@ Page {
                 spacing: Theme.paddingSmall / 2
 
                 Label {
-                    text: model.title
+                    text: model.title ? model.title : qsTr("Unknown title")
                     font.pixelSize: Theme.fontSizeMedium
                     font.bold: true
                     color: Theme.highlightColor
@@ -108,7 +109,7 @@ Page {
                 }
 
                 Label {
-                    text: model.artist
+                    text: model.artist ? model.artist : qsTr("Unknown artist")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.primaryColor
                     truncationMode: TruncationMode.Elide
@@ -116,7 +117,7 @@ Page {
                 }
 
                 Label {
-                    text: model.genre
+                    text: model.genre ? model.genre : qsTr("Unknown genre")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                     truncationMode: TruncationMode.Elide
@@ -141,21 +142,20 @@ Page {
         interval: 2000
         onTriggered: {
            tracks = [
-               {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: ""},
-               {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: ""},
-               {id: 3, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 4, title: "It's No Good", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 5, title: "Universal Soldier", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 6, title: "Just Can't Get Enough", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 7, title: "People Are People", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 8, title: "Blasphemous Rumours", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 9, title: "Behind The Wheel", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               {id: 10, title: "Precious", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
+               {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: "", albumId: 0, duration: 293050},
+               {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: "", albumId: 1, duration: 393050},
+               {id: 3, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 2, duration: 293050},
+               {id: 4, title: "It's No Good", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 3, duration: 293050},
+               {id: 5, title: "Universal Soldier", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 4, duration: 493250},
+               {id: 6, title: "Just Can't Get Enough", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 5, duration: 693150},
+               {id: 7, title: "People Are People", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 6, duration: 383052},
+               {id: 8, title: "Blasphemous Rumours", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 7, duration: 293050},
+               {id: 9, title: "Behind The Wheel", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 8, duration: 393150},
+               {id: 10, title: "Precious", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 9, duration: 886150},
                ]
 
             trackModel.append(tracks)
             isLoadingTracks = false
         }
     }
-
-   }
+}

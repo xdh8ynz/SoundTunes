@@ -6,7 +6,7 @@ CoverBackground {
 
     CoverTemplate {
         objectName: "applicationCover"
-        primaryText: "App"
+        primaryText: qsTr("Application to search music")
         secondaryText: qsTr("SoundWiki")
         icon {
             source: Qt.resolvedUrl("../icons/SoundWiki.svg")
