@@ -34,17 +34,154 @@
 <context>
     <name>DefaultCoverPage</name>
     <message>
-        <location filename="../qml/cover/DefaultCoverPage.qml" line="47"/>
+        <location filename="../qml/cover/DefaultCoverPage.qml" line="10"/>
         <source>SoundWiki</source>
         <translation>SoundWiki</translation>
+    </message>
+    <message>
+        <location filename="../qml/cover/DefaultCoverPage.qml" line="9"/>
+        <source>App</source>
+        <translation>App</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="48"/>
+        <location filename="../qml/pages/MainPage.qml" line="45"/>
         <source>SoundWiki</source>
         <translation>SoundWiki</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="72"/>
+        <source>Enter a query...</source>
+        <translation>Введите запрос...</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="127"/>
+        <source>Unknown title</source>
+        <translation>Заголовок неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="136"/>
+        <source>Unknown artist</source>
+        <translation>Исполнитель неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="144"/>
+        <source>Unknown genre</source>
+        <translation>Жанр неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="179"/>
+        <source>They didn't find anything</source>
+        <translation>Ничего не нашли</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <source>Try writing it differently</source>
+        <translation>Попробуйте написать по-другому</translation>
+    </message>
+</context>
+<context>
+    <name>FavouritesTrackPage</name>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="33"/>
+        <source>Favourites</source>
+        <translation>Избранное</translation>
+    </message>
+    <name>FavouritesTrackPage</name>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="58"/>
+        <source>About track</source>
+        <translation>О треке</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="66"/>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="103"/>
+        <source>Unknown title</source>
+        <translation>Заголовок неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="112"/>
+        <source>Unknown artist</source>
+        <translation>Исполнитель неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="120"/>
+        <source>Unknown genre</source>
+        <translation>Жанр неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FavouritesTrackPage.qml" line="68"/>
+        <source>Are you sure you want to remove track?</source>
+        <translation>Вы уверены, что хотите удалить трек из избранного?</translation>
+    </message>
+</context>
+<context>
+    <name>TrackDetailPage</name>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="41"/>
+        <source>About track</source>
+        <translation>О треке</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="79"/>
+        <source>Unknown title</source>
+        <translation>Заголовок неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="86"/>
+        <source>Unknown artist</source>
+        <translation>Исполнитель неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="93"/>
+        <source>Unknown duration</source>
+        <translation>Продолжительность неизвестна</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Album</source>
+        <translation>Альбом</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="136"/>
+        <source>Unknown title</source>
+        <translation>Заголовок неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="136"/>
+        <source>Unknown title</source>
+        <translation>Заголовок неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="142"/>
+        <source>Year unknown</source>
+        <translation>Год неизвестен</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="149"/>
+        <source>tracks</source>
+        <translation>треков</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="149"/>
+        <source>Count unknown</source>
+        <translation>Число треков неизвестно</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="172"/>
+        <source>Genre</source>
+        <translation>Жанр</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="179"/>
+        <source>Unknown genre</source>
+        <translation>Жанр неизвестен</translation>
     </message>
 </context>
 </TS>
