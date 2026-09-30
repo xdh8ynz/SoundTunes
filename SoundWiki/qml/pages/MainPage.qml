@@ -4,15 +4,12 @@ import Aurora.Controls 1.0
 
 Page {
     id: searchPage
-
     allowedOrientations: Orientation.All
 
     property bool isTryingSearch: false
     property bool noTracksFound: false
-
     // TODO: убрать
     property bool isSuccessfulSearch: true
-
     property var tracks: [
     {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: ""},
     {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: ""},
@@ -23,7 +20,6 @@ Page {
     {id: 7, title: "Chamber Of Reflection", artist: "Mac DeMarco", genre: "Synthpop", cover: ""},
     {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
     ]
-
     property var favouritesTracks: []
 
     ListModel {
@@ -45,11 +41,6 @@ Page {
         timerSearch.restart()
     }
 
-    function loadFavouritesTracks()
-    {
-        timerFavourites.restart()
-    }
-
     AppBar {
         id: header
         headerText: "SoundWiki"
@@ -59,7 +50,9 @@ Page {
             AppBarSpacer { },
                 AppBarButton {
                     icon.source: "image://theme/icon-splus-favorite-selected"
-                    onClicked: loadFavouritesTracks()
+                    onClicked: pageStack.push("FavouritesTrackPage.qml", {
+                                     tracks: favouritesTracks,
+                                 })
             }
         ]
     }
@@ -71,10 +64,12 @@ Page {
             top: header.bottom
             left: parent.left
             right: parent.right
-            margins: Theme.paddingLarge
+            topMargin: Theme.paddingLarge
+            leftMargin: Theme.horizontalPageMargin
+            rightMargin: Theme.horizontalPageMargin
         }
 
-        placeholderText: "Введите запрос..."
+        placeholderText: qsTr("Enter a query...")
         EnterKey.onClicked: searchTracks()
         onTextChanged: {
             noTracksFound = false
@@ -89,7 +84,7 @@ Page {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            topMargin: Theme.horizontalPageMargin
+            topMargin: Theme.paddingLarge
             bottomMargin: Theme.horizontalPageMargin
         }
 
@@ -181,7 +176,7 @@ Page {
             }
 
             Label {
-                text: "Ничего не нашли"
+                text: qsTr("They didn't find anything")
                 font.pixelSize: Theme.fontSizeMedium
                 font.bold: true
                 horizontalAlignment: Text.AlignHCenter
@@ -190,7 +185,7 @@ Page {
             }
 
             Label {
-                text: "Попробуйте написать по-другому"
+                text: qsTr("Try writing it differently")
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryColor
                 horizontalAlignment: Text.AlignHCenter
@@ -214,24 +209,6 @@ Page {
             else{
                 noTracksFound = true
             }
-        }
-    }
-
-    Timer {
-        id: timerFavourites
-        interval: 2000
-        onTriggered: {
-           favouritesTracks = [
-               {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: ""},
-               {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: ""},
-               {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
-               ]
-
-            console.log("ЗДЕСЬ")
-
-            pageStack.push("FavouritesTrackPage.qml", {
-                                tracks: favouritesTracks,
-                            })
         }
     }
 }
