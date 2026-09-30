@@ -5,6 +5,8 @@ import Aurora.Controls 1.0
 Page {
     id: searchPage
 
+    allowedOrientations: Orientation.All
+
     property bool isTryingSearch: false
     property bool noTracksFound: false
 
@@ -22,6 +24,8 @@ Page {
     {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
     ]
 
+    property var favouritesTracks: []
+
     ListModel {
         id: trackModel
     }
@@ -38,7 +42,12 @@ Page {
         noTracksFound = false
         isTryingSearch = true
         trackModel.clear()
-        timer.restart()
+        timerSearch.restart()
+    }
+
+    function loadFavouritesTracks()
+    {
+        timerFavourites.restart()
     }
 
     AppBar {
@@ -50,9 +59,7 @@ Page {
             AppBarSpacer { },
                 AppBarButton {
                     icon.source: "image://theme/icon-splus-favorite-selected"
-                    onClicked: pageStack.push("TrackDetailPage.qml", {
-                    trackId: model.id,
-                })
+                    onClicked: loadFavouritesTracks()
             }
         ]
     }
@@ -194,7 +201,7 @@ Page {
     }
 
     Timer {
-        id: timer
+        id: timerSearch
         interval: 2000
         onTriggered: {
             isTryingSearch = false
@@ -207,6 +214,24 @@ Page {
             else{
                 noTracksFound = true
             }
+        }
+    }
+
+    Timer {
+        id: timerFavourites
+        interval: 2000
+        onTriggered: {
+           favouritesTracks = [
+               {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: ""},
+               {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: ""},
+               {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: ""},
+               ]
+
+            console.log("ЗДЕСЬ")
+
+            pageStack.push("FavouritesTrackPage.qml", {
+                                tracks: favouritesTracks,
+                            })
         }
     }
 }
