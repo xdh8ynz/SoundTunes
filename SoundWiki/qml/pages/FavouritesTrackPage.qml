@@ -52,16 +52,13 @@ Page {
         delegate: ListItem {
             width: trackList.width
             contentHeight: Theme.itemSizeMedium + Theme.paddingLarge * 2
+            onClicked: {
+                pageStack.push("TrackDetailPage.qml", {
+                track: model,
+            })
+            }
 
             menu: ContextMenu {
-                MenuItem {
-                    text: qsTr("About track")
-                    onClicked: {
-                        pageStack.push("TrackDetailPage.qml", {
-                        track: model,
-                    })
-                }
-                }
                 MenuItem {
                     text: qsTr("Delete")
                     onClicked: {

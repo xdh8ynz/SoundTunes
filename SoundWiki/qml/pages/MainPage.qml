@@ -26,6 +26,7 @@ Page {
         id: trackModel
     }
 
+    // TODO: также для таймера добавить проверку что если запущен то не запускать
     function searchTracks()
     {
         var query = searchField.text.trim()
@@ -79,6 +80,8 @@ Page {
     SilicaListView {
         id: trackList
 
+        clip: true
+
         anchors {
             top: searchField.bottom
             left: parent.left
@@ -93,7 +96,6 @@ Page {
         delegate: ListItem {
             width: trackList.width
             contentHeight: Theme.itemSizeMedium + Theme.paddingLarge * 2
-
             onClicked: {
                 pageStack.push("TrackDetailPage.qml", {
                 track: model,
