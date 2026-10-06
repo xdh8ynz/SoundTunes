@@ -6,8 +6,8 @@ Page {
     id: trackDetailPage
     allowedOrientations: Orientation.All
 
-    property var track: ({id: 0, title: "", artist: "", genre: "", cover: "", albumId: 0, duration: 0})
-    property var album: ({id: 0, title: "", year:0, cover: "", count: 0})
+    property var track: ({songId: 0, title: "", artist: "", genre: "", cover: "", albumId: 0, duration: 0})
+    property var album: ({albumId: 0, title: "", year:0, cover: "", count: 0})
     property bool isLikedTrack: false
     property bool isLoadingData: true
 

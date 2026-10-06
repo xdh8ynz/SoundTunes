@@ -139,16 +139,16 @@ Page {
         interval: 2000
         onTriggered: {
            tracks = [
-               {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: "", albumId: 0, duration: 293050},
-               {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: "", albumId: 1, duration: 393050},
-               {id: 3, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 2, duration: 293050},
-               {id: 4, title: "It's No Good", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 3, duration: 293050},
-               {id: 5, title: "Universal Soldier", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 4, duration: 493250},
-               {id: 6, title: "Just Can't Get Enough", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 5, duration: 693150},
-               {id: 7, title: "People Are People", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 6, duration: 383052},
-               {id: 8, title: "Blasphemous Rumours", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 7, duration: 293050},
-               {id: 9, title: "Behind The Wheel", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 8, duration: 393150},
-               {id: 10, title: "Precious", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 9, duration: 886150},
+               {songId: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: "", albumId: 0, duration: 293050},
+               {songId: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: "", albumId: 1, duration: 393050},
+               {songId: 3, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 2, duration: 293050},
+               {songId: 4, title: "It's No Good", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 3, duration: 293050},
+               {songId: 5, title: "Universal Soldier", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 4, duration: 493250},
+               {songId: 6, title: "Just Can't Get Enough", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 5, duration: 693150},
+               {songId: 7, title: "People Are People", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 6, duration: 383052},
+               {songId: 8, title: "Blasphemous Rumours", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 7, duration: 293050},
+               {songId: 9, title: "Behind The Wheel", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 8, duration: 393150},
+               {songId: 10, title: "Precious", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 9, duration: 886150},
                ]
 
             trackModel.append(tracks)

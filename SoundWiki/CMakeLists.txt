@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(ru.ac.uniyar.SoundWiki CXX)
 
-find_package (Qt5 COMPONENTS Core Network Qml Gui Quick LinguistTools REQUIRED)
+find_package (Qt5 COMPONENTS Core Network Qml Gui Quick LinguistTools Network REQUIRED)
 
 include(FindPkgConfig)
 pkg_search_module(AURORA auroraapp REQUIRED)
@@ -18,6 +18,14 @@ qt5_add_translation(QmFiles ${TsFiles})
 
 set(SOURCES
     src/main.cpp
+    src/yandexmusicclient.h
+    src/yandexmusicclient.cpp
+    src/types/song.h
+    src/types/song.cpp
+    src/models/songmodel.h
+    src/models/songmodel.cpp
+    src/controllers/musicsearchcontroller.h
+    src/controllers/musicsearchcontroller.cpp
 )
 
 set(CMAKE_SKIP_RPATH FALSE)

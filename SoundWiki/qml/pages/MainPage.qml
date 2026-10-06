@@ -8,38 +8,31 @@ Page {
 
     property bool isTryingSearch: false
     property bool noTracksFound: false
-    // TODO: убрать
-    property bool isSuccessfulSearch: true
-    property var tracks: [
-    {id: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: "", albumId: 0, duration: 293050},
-    {id: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: "", albumId: 1, duration: 393050},
-    {id: 3, title: "All I Nead", artist: "Radiohead", genre: "Art Rock", cover: "", albumId: 2, duration: 893150},
-    {id: 5, title: "Digital", artist: "Joy Division", genre: "Post-punk", cover: "", albumId: 3, duration: 774152},
-    {id: 5, title: "Isolation", artist: "Joy Division", genre: "Post-punk", cover: "", albumId: 4, duration: 693754},
-    {id: 6, title: "On the Level", artist: "Mac DeMarco", genre: "Psychedelic Pop", cover: "", albumId: 5, duration: 897111},
-    {id: 7, title: "Chamber Of Reflection", artist: "Mac DeMarco", genre: "Synthpop", cover: "", albumId: 6, duration: 773051},
-    {id: 8, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 7, duration: 394151},
-    ]
     property var favouritesTracks: []
+    property var songModel: musicSearchController.songModel
 
-    ListModel {
-        id: trackModel
-    }
-
-    // TODO: также для таймера добавить проверку что если запущен то не запускать
     function searchTracks()
     {
-        var query = searchField.text.trim()
-
-        if (query.length === 0)
-        {
-            return
-        }
-
         noTracksFound = false
         isTryingSearch = true
-        trackModel.clear()
-        timerSearch.restart()
+        musicSearchController.searchSounds(searchField.text.trim());
+    }
+
+    function handleSongSearchFinished()
+    {
+        if (songModel.rowCount() === 0)
+        {
+            noTracksFound = true
+        }
+
+        isTryingSearch = false;
+    }
+
+    Connections {
+        target: musicSearchController
+        onSongSearchFinished: {
+            handleSongSearchFinished();
+        }
     }
 
     AppBar {
@@ -91,7 +84,7 @@ Page {
             bottomMargin: Theme.horizontalPageMargin
         }
 
-        model: trackModel
+        model: songModel
 
         delegate: ListItem {
             width: trackList.width
@@ -193,23 +186,6 @@ Page {
                 horizontalAlignment: Text.AlignHCenter
                 width: parent.width
                 wrapMode: Text.Wrap
-            }
-        }
-    }
-
-    Timer {
-        id: timerSearch
-        interval: 2000
-        onTriggered: {
-            isTryingSearch = false
-
-            if (isSuccessfulSearch)
-            {
-                trackModel.append(tracks)
-                noTracksFound = false
-            }
-            else{
-                noTracksFound = true
             }
         }
     }
