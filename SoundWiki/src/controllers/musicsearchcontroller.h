@@ -3,6 +3,7 @@
 
 #include "../types/song.h"
 #include "../models/songmodel.h"
+#include "../yandexmusicclient.h"
 
 #include <QObject>
 #include <memory>
@@ -28,6 +29,7 @@ private slots:
 
 private:
     std::unique_ptr<SongModel> m_song_model;
+    std::unique_ptr<YandexMusicClient> m_music_client;
 };
 
 #endif // MUSICCONROLLER_H

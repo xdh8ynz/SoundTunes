@@ -8,6 +8,7 @@
 MusicSearchController::MusicSearchController(QObject *parent): QObject(parent)
 {
     m_song_model.reset(new SongModel());
+    m_music_client.reset(new YandexMusicClient());
 }
 
 MusicSearchController::~MusicSearchController()
@@ -20,9 +21,7 @@ void MusicSearchController::searchSounds(QString query)
     m_song_model->clear();
     emit songModelChanged();
 
-    qDebug() << "Поиск музыки";
-    qDebug() << query;
-
+    m_music_client->searchSongs(query);
     QTimer::singleShot(3000, this, &MusicSearchController::onSearchFinished);
 }
 
