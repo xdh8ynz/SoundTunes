@@ -26,6 +26,8 @@ set(SOURCES
     src/models/songmodel.cpp
     src/controllers/musicsearchcontroller.h
     src/controllers/musicsearchcontroller.cpp
+    src/types/songalbum.h
+    src/types/songalbum.cpp
 )
 
 set(CMAKE_SKIP_RPATH FALSE)

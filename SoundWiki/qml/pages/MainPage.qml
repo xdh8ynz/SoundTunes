@@ -136,7 +136,7 @@ Page {
                 }
 
                 Label {
-                    text: model.genre ? model.artist : qsTr("Unknown genre")
+                    text: model.genre ? model.genre : qsTr("Unknown genre")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                     truncationMode: TruncationMode.Elide

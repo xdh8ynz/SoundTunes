@@ -25,7 +25,8 @@ signals:
     void songSearchFinished();
 
 private slots:
-    void onSearchFinished();
+    void onSearchFinished(QList<Song> songs);
+    void onSearchFailed();
 
 private:
     std::unique_ptr<SongModel> m_song_model;

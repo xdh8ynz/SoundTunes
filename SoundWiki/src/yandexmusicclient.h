@@ -2,7 +2,10 @@
 #define YANDEXMUSICCLIENT_H
 
 #include <QNetworkAccessManager>
+#include <QJsonObject>
 #include <memory>
+#include "types/song.h"
+#include "types/songalbum.h"
 
 class YandexMusicClient: public QObject
 {
@@ -12,15 +15,23 @@ public:
     ~YandexMusicClient();
 
     void searchSongs(QString query);
-
 signals:
     void onSongsSearchFailed();
+    void onSongsSearchSuccess(QList<Song> songs);
 
 public slots:
     void onSongsReceived(QNetworkReply *reply);
 
 private:
+    static constexpr int MaxCountSongsInList = 50;
+    static constexpr int CoverSize = 100;
+
     std::unique_ptr<QNetworkAccessManager> m_manager;
+
+    QList<Song> parseSongsList(QString response);
+    Song parseSongObject(QJsonObject song_object);
+    SongAlbum parseSongAlbum(QJsonObject song_album_object);
+    QString getArtistSongName(QJsonObject artist_object);
 };
 
 #endif // YANDEXMUSICCLIENT_H
