@@ -1,34 +1,58 @@
 #include "songalbum.h"
 
-SongAlbum::SongAlbum()
+Album::Album()
 {
     m_album_id = -1;
     m_cover = "";
     m_genre = "";
 }
 
-SongAlbum::SongAlbum(int album_id, QString cover, QString genre)
+Album::Album(int album_id,
+                     int year,
+                     int count_tracks,
+                     QString title,
+                     QString cover,
+                     QString genre)
 {
     m_album_id = album_id;
+    m_year = year;
+    m_count_tracks = count_tracks;
+    m_title = title;
     m_cover = cover;
     m_genre = genre;
 }
 
-SongAlbum::~SongAlbum()
+Album::~Album()
 {
 
 }
 
-QString SongAlbum::getCover() const
+QString Album::getCover() const
 {
     return m_cover;
 }
 
-QString SongAlbum::getGenre() const
+QString Album::getGenre() const
 {
     return m_genre;
 }
 
-int SongAlbum::getAlbumId() const{
+QString Album::getTitle() const{
+    return m_title;
+}
+
+int Album::getAlbumId() const{
     return m_album_id;
 }
+
+int Album::getYear() const
+{
+    return m_year;
+}
+
+int Album::getCountTracks() const
+{
+    return m_count_tracks;
+}
+
+

@@ -2,32 +2,32 @@
 #define SONG_H
 
 #include <QObject>
+#include "songalbum.h"
 
 class Song
 {   
 public:
     Song();
-    Song(int song_id, int album_id, int duration,
-         QString title, QString artist, QString genre, QString cover);
+    Song(int song_id,
+         int duration,
+         QString title,
+         QString artist,
+         Album album);
 
     ~Song();
 
     int getSongId() const;
-    int getAlbumId() const;
     int getDuration() const;
     QString getTitle() const;
     QString getArtist() const;
-    QString getGenre() const;
-    QString getCover() const;
+    Album getAlbum() const;
 
 private:
     int m_song_id;
-    int m_album_id;
     int m_duration;
     QString m_title;
     QString m_artist;
-    QString m_genre;
-    QString m_cover;
+    Album m_album;
 };
 
 Q_DECLARE_METATYPE(Song)

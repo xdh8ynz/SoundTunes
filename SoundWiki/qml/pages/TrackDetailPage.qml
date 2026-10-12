@@ -6,8 +6,8 @@ Page {
     id: trackDetailPage
     allowedOrientations: Orientation.All
 
-    property var track: ({songId: 0, title: "", artist: "", genre: "", cover: "", albumId: 0, duration: 0})
-    property var album: ({albumId: 0, title: "", year:0, cover: "", count: 0})
+    property var track
+
     property bool isLikedTrack: false
     property bool isLoadingData: true
 
@@ -122,7 +122,7 @@ Page {
                     Image {
                         width: Theme.itemSizeHuge
                         height: Theme.itemSizeHuge
-                        source: album.cover || "image://theme/icon-l-sounds"
+                        source: track.cover || "image://theme/icon-l-sounds"
                         fillMode: Image.PreserveAspectCrop
                         anchors.verticalCenter: parent.verticalCenter
                     }
@@ -133,20 +133,20 @@ Page {
                         spacing: Theme.paddingSmall / 2
 
                         Label {
-                            text: album.title ? album.title : qsTr("Unknown title")
+                            text: track.albumName ? track.albumName : qsTr("Unknown title")
                             truncationMode: TruncationMode.Elide
                             width: parent.width
                         }
 
                         Label {
-                            text: album.year ? album.year : qsTr("Year unknown")
+                            text: track.albumYear ? track.albumYear : qsTr("Year unknown")
                             color: Theme.primaryColor
                             truncationMode: TruncationMode.Elide
                             width: parent.width
                         }
 
                         Label {
-                            text: album.count ? album.count + " " + qsTr("tracks"): qsTr("Count unknown")
+                            text: track.countTracks ? track.countTracks + " " + qsTr("tracks"): qsTr("Count unknown")
                             color: Theme.secondaryColor
                             truncationMode: TruncationMode.Elide
                             width: parent.width
@@ -197,7 +197,6 @@ Page {
         id: timer
         interval: 2000
         onTriggered: {
-            album = ({id: 0, title: "Gore", year:2016, cover: "", count: 11})
             isLoadingData = false
         }
     }

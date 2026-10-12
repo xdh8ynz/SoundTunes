@@ -18,6 +18,9 @@ public:
         CoverRole,
         AlbumIdRole,
         DurationRole,
+        AlbumNameRole,
+        AlbumYearRole,
+        AlbumCountTracks
     };
 
     explicit SongModel(QObject *parent = nullptr);

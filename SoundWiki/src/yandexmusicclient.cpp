@@ -149,7 +149,7 @@ Song YandexMusicClient::parseSongObject(QJsonObject song_object)
     }
     QJsonArray albums_array = albums_value.toArray();
 
-    SongAlbum song_album = SongAlbum();
+    Album song_album = Album();
     if (!albums_array.isEmpty())
     {
         QJsonValue first_album_value = albums_array.first();
@@ -181,41 +181,56 @@ Song YandexMusicClient::parseSongObject(QJsonObject song_object)
         artist = getArtistSongName(artist_object);
     }
 
-    return Song(song_id,
-                song_album.getAlbumId(),
-                duration,
-                title,
-                artist,
-                song_album.getGenre(),
-                song_album.getCover());
+    return Song(song_id, duration, title, artist, song_album);
 }
 
-SongAlbum YandexMusicClient::parseSongAlbum(QJsonObject song_album_object)
+Album YandexMusicClient::parseSongAlbum(QJsonObject song_album_object)
 {
     QJsonValue genre_value = song_album_object.value("genre");
     if (!genre_value.isString())
     {
-        return SongAlbum();
+        return Album();
     }
     QString genre = genre_value.toString();
 
     QJsonValue album_id_value = song_album_object.value("id");
     if (!album_id_value.isDouble())
     {
-        return SongAlbum();
+        return Album();
     }
     int album_id = album_id_value.toInt();
 
     QJsonValue cover_value = song_album_object.value("coverUri");
     if (!cover_value.isString())
     {
-        return SongAlbum();
+        return Album();
     }
     QString cover = cover_value.toString();
     cover.replace("%%", QString::number(CoverSize) + "x" + QString::number(CoverSize));
     cover = "https://" + cover;
 
-    return SongAlbum(album_id, cover, genre);
+    QJsonValue album_year_value = song_album_object.value("year");
+    if (!album_year_value.isDouble())
+    {
+        return Album();
+    }
+    int album_year = album_year_value.toInt();
+
+    QJsonValue album_count_tracks = song_album_object.value("trackCount");
+    if (!album_count_tracks.isDouble())
+    {
+        return Album();
+    }
+    int count_tracks = album_count_tracks.toInt();
+
+    QJsonValue nameValue = song_album_object.value("title");
+    if (!nameValue.isString())
+    {
+        return Album();
+    }
+    QString name = nameValue.toString();
+
+    return Album(album_id, album_year, count_tracks, name, cover, genre);
 }
 
 QString YandexMusicClient::getArtistSongName(QJsonObject artist_object)

@@ -3,24 +3,23 @@
 Song::Song()
 {
     m_song_id = -1;
-    m_album_id = -1;
     m_duration = -1;
     m_title = "";
     m_artist = "";
-    m_genre = "";
-    m_cover = "";
+    m_album = Album();
 }
 
-Song::Song(int song_id, int album_id, int duration,
-     QString title, QString artist, QString genre, QString cover)
+Song::Song(int song_id,
+           int duration,
+           QString title,
+           QString artist,
+           Album album)
 {
     m_song_id = song_id;
-    m_album_id = album_id;
     m_duration = duration;
     m_title = title;
     m_artist = artist;
-    m_genre = genre;
-    m_cover = cover;
+    m_album = album;
 }
 
 Song::~Song()
@@ -31,11 +30,6 @@ Song::~Song()
 int Song::getSongId() const
 {
     return m_song_id;
-}
-
-int Song::getAlbumId() const
-{
-    return m_album_id;
 }
 
 int Song::getDuration() const
@@ -53,12 +47,6 @@ QString Song::getArtist() const
     return m_artist;
 }
 
-QString Song::getGenre() const
-{
-    return m_genre;
-}
-
-QString Song::getCover() const
-{
-    return m_cover;
+Album Song::getAlbum() const{
+    return m_album;
 }

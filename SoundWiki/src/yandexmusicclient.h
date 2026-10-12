@@ -30,7 +30,7 @@ private:
 
     QList<Song> parseSongsList(QString response);
     Song parseSongObject(QJsonObject song_object);
-    SongAlbum parseSongAlbum(QJsonObject song_album_object);
+    Album parseSongAlbum(QJsonObject song_album_object);
     QString getArtistSongName(QJsonObject artist_object);
 };
 

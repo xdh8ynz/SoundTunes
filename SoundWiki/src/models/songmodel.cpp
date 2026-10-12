@@ -28,6 +28,7 @@ QVariant SongModel::data(const QModelIndex &index, int role) const
     }
 
     const Song song = m_songs[index.row()];
+    const Album album = song.getAlbum();
 
     switch (role) {
         case SongIdRole: {
@@ -40,16 +41,25 @@ QVariant SongModel::data(const QModelIndex &index, int role) const
             return song.getArtist();
         }
         case GenreRole: {
-            return song.getGenre();
+            return album.getGenre();
         }
         case CoverRole: {
-            return song.getCover();
-        }
-        case AlbumIdRole: {
-            return song.getAlbumId();
+            return album.getCover();
         }
         case DurationRole: {
             return song.getDuration();
+        }
+        case AlbumIdRole: {
+            return album.getAlbumId();
+        }
+        case AlbumNameRole: {
+            return album.getTitle();
+        }
+        case AlbumYearRole: {
+            return album.getYear();
+        }
+        case AlbumCountTracks: {
+            return album.getCountTracks();
         }
         default: {
             return QVariant();
@@ -80,8 +90,11 @@ QHash<int, QByteArray> SongModel::roleNames() const
     roles[ArtistRole] = "artist";
     roles[GenreRole] = "genre";
     roles[CoverRole] = "cover";
-    roles[AlbumIdRole] = "albumId";
     roles[DurationRole] = "duration";
+    roles[AlbumIdRole] = "albumId";
+    roles[AlbumNameRole] = "albumName";
+    roles[AlbumYearRole] = "albumYear";
+    roles[AlbumCountTracks] = "countTracks";
     return roles;
 }
 
