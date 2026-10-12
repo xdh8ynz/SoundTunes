@@ -64,7 +64,11 @@ Page {
         }
 
         placeholderText: qsTr("Enter a query...")
-        EnterKey.onClicked: searchTracks()
+        EnterKey.onClicked: {
+            searchField.focus = false
+            searchTracks()
+        }
+
         onTextChanged: {
             noTracksFound = false
         }

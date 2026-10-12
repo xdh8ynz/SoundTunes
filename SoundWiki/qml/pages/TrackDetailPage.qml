@@ -139,14 +139,15 @@ Page {
                         }
 
                         Label {
-                            text: track.albumYear ? track.albumYear : qsTr("Year unknown")
+                            text: track.albumYear > 0 ? track.albumYear : qsTr("Year unknown")
                             color: Theme.primaryColor
                             truncationMode: TruncationMode.Elide
                             width: parent.width
                         }
 
                         Label {
-                            text: track.countTracks ? track.countTracks + " " + qsTr("tracks"): qsTr("Count unknown")
+                            text: track.countTracks > 0 ? track.countTracks + " " +
+                                                            qsTr("tracks"): qsTr("Count unknown")
                             color: Theme.secondaryColor
                             truncationMode: TruncationMode.Elide
                             width: parent.width

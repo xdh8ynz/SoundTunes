@@ -23,8 +23,8 @@ public slots:
     void onSongsReceived(QNetworkReply *reply);
 
 private:
-    static constexpr int MaxCountSongsInList = 50;
-    static constexpr int CoverSize = 100;
+    static constexpr int MaxCountSongsInList = 20;
+    static constexpr int CoverSize = 600;
 
     std::unique_ptr<QNetworkAccessManager> m_manager;
 
