@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Aurora.Controls 1.0
+import ".."
 
 Page {
     id: trackDetailPage
@@ -28,12 +29,40 @@ Page {
 
     function changeStatusTrack()
     {
+        if (isLikedTrack)
+        {
+            dao.deleteSong(track.songId)
+        }
+        else{
+            dao.insertSong(
+                    track.songId,
+                    track.title,
+                    track.artist,
+                    track.genre,
+                    track.cover,
+                    track.duration,
+                    track.albumId,
+                    track.albumName,
+                    track.albumYear,
+                    track.countTracks
+            )
+        }
         isLikedTrack = !isLikedTrack
     }
 
+    function checkTrackInDatabase()
+    {
+        isLoadingData = true
+        isLikedTrack = dao.isSongInFavourites(track.songId);
+        isLoadingData = false;
+    }
+
     Component.onCompleted: {
-        // TODO: загрузка информации о плейлисте + проверка есть ли в бд
-        timer.restart()
+        checkTrackInDatabase();
+    }
+
+    Dao {
+        id: dao
     }
 
     AppBar {
@@ -114,12 +143,12 @@ Page {
                     width: parent.width
                 }
 
-                Row {
-                    id: albumRow
+                Item {
                     width: parent.width
-                    spacing: Theme.paddingLarge
+                    height: Theme.itemSizeHuge
 
                     Image {
+                        id: albumCover
                         width: Theme.itemSizeHuge
                         height: Theme.itemSizeHuge
                         source: track.cover || "image://theme/icon-l-sounds"
@@ -128,8 +157,10 @@ Page {
                     }
 
                     Column {
+                        anchors.left: albumCover.right
+                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
-                        width: parent.width - Theme.itemSizeMedium - Theme.paddingLarge * 2
                         spacing: Theme.paddingSmall / 2
 
                         Label {
@@ -154,7 +185,6 @@ Page {
                         }
                     }
                      }
-
 
             }
 
@@ -192,13 +222,5 @@ Page {
         size: BusyIndicatorSize.Large
         running: isLoadingData
         visible: isLoadingData
-    }
-
-    Timer {
-        id: timer
-        interval: 2000
-        onTriggered: {
-            isLoadingData = false
-        }
     }
 }

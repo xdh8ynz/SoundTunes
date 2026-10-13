@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Aurora.Controls 1.0
+import ".."
 
 Page {
     id: favouritesPage
@@ -10,18 +11,51 @@ Page {
     property bool isLoadingTracks: true
 
     Component.onCompleted: {
+        isLoadingTracks = true
         loadFavouritesTracks()
+    }
+
+    onStatusChanged: {
+        if (status === PageStatus.Active)
+        {
+            isLoadingTracks = true
+            loadFavouritesTracks()
+        }
     }
 
     function loadFavouritesTracks()
     {
-        isLoadingTracks = true
-        timerFavourites.restart()
+        trackModel.clear()
+        dao.retrieveSongs(function (songs){
+            for (var i = 0; i < songs.length; i++)
+            {
+                var song = songs.item(i);
+                trackModel.append({
+                                  songId: song.id,
+                                  title: song.title,
+                                  artist: song.artist,
+                                  genre: song.genre,
+                                  cover: song.cover,
+                                  duration: song.duration,
+                                  albumId: song.albumId,
+                                  albumName: song.albumName,
+                                  albumYear: song.albumYear,
+                                  countTracks: song.countTracks
+                              })
+            }
+        });
+
+        isLoadingTracks = false
     }
 
     function removeTrack(index, id)
     {
+        dao.deleteSong(id)
         trackModel.remove(index)
+    }
+
+    Dao{
+        id: dao
     }
 
     ListModel {
@@ -63,7 +97,7 @@ Page {
                     text: qsTr("Delete")
                     onClicked: {
                         remorse.execute("Are you sure you want to remove track?",
-                        function() { removeTrack(model.index, model.id) }
+                        function() { removeTrack(model.index, model.songId) }
                       )
                 }
             }
@@ -131,28 +165,6 @@ Page {
             size: BusyIndicatorSize.Large
             running: isLoadingTracks
             visible: isLoadingTracks
-        }
-    }
-
-    Timer {
-        id: timerFavourites
-        interval: 2000
-        onTriggered: {
-           tracks = [
-               {songId: 1, title: "Digital Bath", artist: "Deftones", genre: "Alternative Metal", cover: "", albumId: 0, duration: 293050},
-               {songId: 2, title: "Phantom Bride", artist: "Deftones", genre: "Space Rock", cover: "", albumId: 1, duration: 393050},
-               {songId: 3, title: "Never Let Me Down Again", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 2, duration: 293050},
-               {songId: 4, title: "It's No Good", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 3, duration: 293050},
-               {songId: 5, title: "Universal Soldier", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 4, duration: 493250},
-               {songId: 6, title: "Just Can't Get Enough", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 5, duration: 693150},
-               {songId: 7, title: "People Are People", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 6, duration: 383052},
-               {songId: 8, title: "Blasphemous Rumours", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 7, duration: 293050},
-               {songId: 9, title: "Behind The Wheel", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 8, duration: 393150},
-               {songId: 10, title: "Precious", artist: "Depeche Mode", genre: "Synthpop", cover: "", albumId: 9, duration: 886150},
-               ]
-
-            trackModel.append(tracks)
-            isLoadingTracks = false
         }
     }
 }
