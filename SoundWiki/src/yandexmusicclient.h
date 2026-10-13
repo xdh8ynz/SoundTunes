@@ -7,7 +7,7 @@
 #include "types/song.h"
 #include "types/songalbum.h"
 
-class YandexMusicClient: public QObject
+class YandexMusicClient : public QObject
 {
     Q_OBJECT
 public:

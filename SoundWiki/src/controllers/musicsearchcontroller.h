@@ -8,16 +8,16 @@
 #include <QObject>
 #include <memory>
 
-class MusicSearchController: public QObject
+class MusicSearchController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(SongModel* songModel READ songModel NOTIFY songModelChanged)
+    Q_PROPERTY(SongModel *songModel READ songModel NOTIFY songModelChanged)
 
 public:
     explicit MusicSearchController(QObject *parent = nullptr);
     ~MusicSearchController();
 
-    SongModel* songModel() const;
+    SongModel *songModel() const;
 
     Q_INVOKABLE void searchSounds(QString query);
 signals:

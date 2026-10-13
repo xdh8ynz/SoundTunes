@@ -184,7 +184,7 @@ Page {
                             width: parent.width
                         }
                     }
-                     }
+                }
 
             }
 

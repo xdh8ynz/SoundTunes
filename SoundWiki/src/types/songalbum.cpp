@@ -8,11 +8,11 @@ Album::Album()
 }
 
 Album::Album(int album_id,
-                     int year,
-                     int count_tracks,
-                     QString title,
-                     QString cover,
-                     QString genre)
+             int year,
+             int count_tracks,
+             QString title,
+             QString cover,
+             QString genre)
 {
     m_album_id = album_id;
     m_year = year;
@@ -24,7 +24,6 @@ Album::Album(int album_id,
 
 Album::~Album()
 {
-
 }
 
 QString Album::getCover() const
@@ -37,11 +36,13 @@ QString Album::getGenre() const
     return m_genre;
 }
 
-QString Album::getTitle() const{
+QString Album::getTitle() const
+{
     return m_title;
 }
 
-int Album::getAlbumId() const{
+int Album::getAlbumId() const
+{
     return m_album_id;
 }
 
@@ -54,5 +55,3 @@ int Album::getCountTracks() const
 {
     return m_count_tracks;
 }
-
-

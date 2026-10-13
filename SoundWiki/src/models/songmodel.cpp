@@ -4,14 +4,12 @@
 #include <QDebug>
 #include <QAbstractListModel>
 
-SongModel::SongModel(QObject *parent): QAbstractListModel(parent)
+SongModel::SongModel(QObject *parent) : QAbstractListModel(parent)
 {
-
 }
 
 SongModel::~SongModel()
 {
-
 }
 
 int SongModel::rowCount(const QModelIndex &parent) const
@@ -30,38 +28,50 @@ QVariant SongModel::data(const QModelIndex &index, int role) const
     const Song song = m_songs[index.row()];
     const Album album = song.getAlbum();
 
-    switch (role) {
-        case SongIdRole: {
+    switch (role)
+    {
+        case SongIdRole:
+        {
             return song.getSongId();
         }
-        case TitleRole: {
+        case TitleRole:
+        {
             return song.getTitle();
         }
-        case ArtistRole: {
+        case ArtistRole:
+        {
             return song.getArtist();
         }
-        case GenreRole: {
+        case GenreRole:
+        {
             return album.getGenre();
         }
-        case CoverRole: {
+        case CoverRole:
+        {
             return album.getCover();
         }
-        case DurationRole: {
+        case DurationRole:
+        {
             return song.getDuration();
         }
-        case AlbumIdRole: {
+        case AlbumIdRole:
+        {
             return album.getAlbumId();
         }
-        case AlbumNameRole: {
+        case AlbumNameRole:
+        {
             return album.getTitle();
         }
-        case AlbumYearRole: {
+        case AlbumYearRole:
+        {
             return album.getYear();
         }
-        case AlbumCountTracks: {
+        case AlbumCountTracks:
+        {
             return album.getCountTracks();
         }
-        default: {
+        default:
+        {
             return QVariant();
         }
     }
@@ -98,7 +108,6 @@ QHash<int, QByteArray> SongModel::roleNames() const
     return roles;
 }
 
-
 void SongModel::clear()
 {
     beginResetModel();
@@ -113,4 +122,3 @@ void SongModel::updateSongs(QList<Song> songs)
     m_songs.append(songs);
     endResetModel();
 }
-

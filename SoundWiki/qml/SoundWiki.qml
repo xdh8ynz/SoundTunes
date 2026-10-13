@@ -8,7 +8,7 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/DefaultCoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    MusicSearchController{
+    MusicSearchController {
         id: musicSearchController
     }
 }

@@ -7,16 +7,16 @@ QtObject {
     function createSongTable() {
         db.transaction(function (tx) {
             tx.executeSql("CREATE TABLE IF NOT EXISTS song (" +
-                "id INTEGER PRIMARY KEY, " +
-                "title TEXT, " +
-                "artist TEXT, " +
-                "genre TEXT, " +
-                "cover TEXT, " +
-                "duration INTEGER, " +
-                "albumId INTEGER, " +
-                "albumName TEXT, " +
-                "albumYear INTEGER, " +
-                "countTracks INTEGER)");
+             "id INTEGER PRIMARY KEY, " +
+             "title TEXT, " +
+             "artist TEXT, " +
+             "genre TEXT, " +
+             "cover TEXT, " +
+             "duration INTEGER, " +
+             "albumId INTEGER, " +
+             "albumName TEXT, " +
+             "albumYear INTEGER, " +
+             "countTracks INTEGER)");
         });
     }
 
@@ -33,11 +33,11 @@ QtObject {
                         count_tracks) {
         db.transaction(function (tx) {
             tx.executeSql(
-                "INSERT INTO song (id, title, artist, genre,
-                cover, duration, albumId, albumName,
-                albumYear, countTracks) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                [song_id, title, artist, genre, cover, duration,
+                 "INSERT INTO song (id, title, artist, genre,
+                 cover, duration, albumId, albumName,
+                 albumYear, countTracks) " +
+                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                 [song_id, title, artist, genre, cover, duration,
                  album_id, album_name, album_year, count_tracks]
             );
         });
@@ -101,8 +101,6 @@ QtObject {
 
     Component.onCompleted: {
         db = LocalStorage.openDatabaseSync("song", "1.0");
-
         createSongTable();
-
     }
 }

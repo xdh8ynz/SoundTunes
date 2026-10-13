@@ -6,11 +6,12 @@
 #include <QObject>
 #include <QAbstractListModel>
 
-class SongModel: public QAbstractListModel
+class SongModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    enum Roles {
+    enum Roles
+    {
         SongIdRole = Qt::UserRole + 1,
         TitleRole,
         ArtistRole,

@@ -8,11 +8,11 @@ class Album
 public:
     Album();
     Album(int album_id,
-              int year,
-              int count_tracks,
-              QString title,
-              QString cover,
-              QString genre);
+          int year,
+          int count_tracks,
+          QString title,
+          QString cover,
+          QString genre);
 
     ~Album();
 

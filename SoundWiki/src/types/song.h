@@ -5,7 +5,7 @@
 #include "songalbum.h"
 
 class Song
-{   
+{
 public:
     Song();
     Song(int song_id,

@@ -4,8 +4,7 @@
 #include <QtDebug>
 #include <QTimer>
 
-
-MusicSearchController::MusicSearchController(QObject *parent): QObject(parent)
+MusicSearchController::MusicSearchController(QObject *parent) : QObject(parent)
 {
     m_song_model.reset(new SongModel());
 
@@ -14,12 +13,10 @@ MusicSearchController::MusicSearchController(QObject *parent): QObject(parent)
                      this, &MusicSearchController::onSearchFinished);
     QObject::connect(m_music_client.get(), &YandexMusicClient::onSongsSearchFailed,
                      this, &MusicSearchController::onSearchFailed);
-
 }
 
 MusicSearchController::~MusicSearchController()
 {
-
 }
 
 void MusicSearchController::searchSounds(QString query)
@@ -30,7 +27,7 @@ void MusicSearchController::searchSounds(QString query)
     m_music_client->searchSongs(query);
 }
 
-SongModel* MusicSearchController::songModel() const
+SongModel *MusicSearchController::songModel() const
 {
     return m_song_model.get();
 }

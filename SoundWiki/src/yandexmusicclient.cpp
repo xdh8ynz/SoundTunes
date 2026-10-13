@@ -9,14 +9,13 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-YandexMusicClient::YandexMusicClient(QObject *parent): QObject(parent)
+YandexMusicClient::YandexMusicClient(QObject *parent) : QObject(parent)
 {
     m_manager.reset(new QNetworkAccessManager());
 }
 
 YandexMusicClient::~YandexMusicClient()
 {
-
 }
 
 void YandexMusicClient::searchSongs(QString query)
@@ -38,7 +37,8 @@ void YandexMusicClient::searchSongs(QString query)
     QNetworkReply *reply = m_manager->get(request);
 
     connect(reply, &QNetworkReply::finished, this,
-            [this, reply]() {
+            [this, reply]()
+            {
                 onSongsReceived(reply);
             });
 
@@ -50,9 +50,11 @@ void YandexMusicClient::onSongsReceived(QNetworkReply *reply)
     if (reply->error() == QNetworkReply::NetworkError::NoError)
     {
         QString response = QString(reply->readAll());
+
         emit onSongsSearchSuccess(parseSongsList(response));
     }
-    else{
+    else
+    {
         qDebug() << "Ошибка запроса";
         qDebug() << reply->errorString();
 
@@ -75,7 +77,6 @@ QList<Song> YandexMusicClient::parseSongsList(QString response)
     if (!result_value.isObject())
     {
         return QList<Song>();
-
     }
     QJsonObject result_object = result_value.toObject();
 
@@ -93,7 +94,7 @@ QList<Song> YandexMusicClient::parseSongsList(QString response)
     }
     QJsonArray results_array = results_value.toArray();
 
-    for (const QJsonValue &song_value: results_array)
+    for (const QJsonValue &song_value : results_array)
     {
         if (!song_value.isObject())
         {

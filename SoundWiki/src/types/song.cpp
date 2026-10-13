@@ -24,7 +24,6 @@ Song::Song(int song_id,
 
 Song::~Song()
 {
-
 }
 
 int Song::getSongId() const
@@ -47,6 +46,7 @@ QString Song::getArtist() const
     return m_artist;
 }
 
-Album Song::getAlbum() const{
+Album Song::getAlbum() const
+{
     return m_album;
 }
