@@ -115,6 +115,13 @@ Page {
                 source: model.cover || "image://theme/icon-l-sound"
                 fillMode: Image.PreserveAspectCrop
                 anchors.verticalCenter: parent.verticalCenter
+
+                onStatusChanged: {
+                    if (status === Image.Error)
+                    {
+                        source = "image://theme/icon-l-sound"
+                    }
+                }
             }
 
             Column {

@@ -154,6 +154,13 @@ Page {
                         source: track.cover || "image://theme/icon-l-sounds"
                         fillMode: Image.PreserveAspectCrop
                         anchors.verticalCenter: parent.verticalCenter
+
+                        onStatusChanged: {
+                            if (status === Image.Error)
+                            {
+                                source = "image://theme/icon-l-sound"
+                            }
+                        }
                     }
 
                     Column {
