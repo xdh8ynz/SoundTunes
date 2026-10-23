@@ -207,6 +207,7 @@ Page {
                         fillMode: Image.PreserveAspectCrop
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.topMargin: Theme.paddingMedium
+                        asynchronous: true
 
                         BusyIndicator{
                             anchors.fill: parent
