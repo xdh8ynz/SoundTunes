@@ -149,6 +149,21 @@
         <translation>Альбом</translation>
     </message>
     <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Title</source>
+        <translation>Название</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Artist</source>
+        <translation>Исполнитель</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Duration</source>
+        <translation>Время</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/TrackDetailPage.qml" line="136"/>
         <source>Unknown title</source>
         <translation>Заголовок неизвестен</translation>

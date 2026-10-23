@@ -183,5 +183,20 @@
         <source>Unknown genre</source>
         <translation>Unknown genre</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Title</source>
+        <translation>Title</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Artist</source>
+        <translation>Artist</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/TrackDetailPage.qml" line="111"/>
+        <source>Duration</source>
+        <translation>Duration</translation>
+    </message>
 </context>
 </TS>

@@ -102,33 +102,67 @@ Page {
             Column{
                 id: trackComponent
                 width: parent.width
-                spacing: Theme.paddingMedium
+                spacing: Theme.paddingLarge
 
-                Label {
-                    text: track.title ? track.title : qsTr("Unknown title")
-                    font.bold: true
-                    truncationMode: TruncationMode.Elide
+                Column{
                     width: parent.width
+                    spacing: Theme.paddingMedium
+
+                    Label{
+                        text: qsTr("Title")
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                        font.bold: true
+                    }
+
+                    Label {
+                        text: track.title ? track.title : qsTr("Unknown")
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                    }
                 }
 
-                Label {
-                    text: track.artist ? track.artist : qsTr("Unknown artist")
-                    color: Theme.primaryColor
-                    truncationMode: TruncationMode.Elide
+                Column {
                     width: parent.width
+                    spacing: Theme.paddingMedium
+
+                    Label{
+                        text: qsTr("Artist")
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                        font.bold: true
+                    }
+
+                    Label {
+                        text: track.artist ? track.artist : qsTr("Unknown")
+                        color: Theme.primaryColor
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                    }
                 }
 
-                Label {
-                    text: track.duration > 0 ? formatDuration(track.duration) : qsTr("Unknown duration")
-                    color: Theme.secondaryColor
-                    truncationMode: TruncationMode.Elide
+                Column{
                     width: parent.width
+                    spacing: Theme.paddingMedium
+
+                    Label{
+                        text: qsTr("Duration")
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                        font.bold: true
+                    }
+
+                    Label {
+                        text: track.duration > 0 ? formatDuration(track.duration) : qsTr("Unknown")
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                    }
                 }
             }
 
             Item{
                 width: parent.width
-                height: 3 * Theme.paddingLarge
+                height: Theme.paddingLarge
             }
 
             Column{
@@ -195,10 +229,9 @@ Page {
 
             }
 
-
             Item{
                 width: parent.width
-                height: 3 * Theme.paddingLarge
+                height: Theme.paddingLarge
             }
 
             Column {

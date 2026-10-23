@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 16.0.0, 2026-10-13T13:10:02. -->
+<!-- Written by QtCreator 16.0.0, 2026-10-23T16:19:00. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -103,10 +103,10 @@
     <value type="int" key="CMake.Configure.BaseEnvironment">2</value>
     <value type="bool" key="CMake.Configure.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="CMake.Configure.UserEnvironmentChanges"/>
-    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
--DCMAKE_BUILD_TYPE:STRING=Debug
--DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_BUILD_TYPE:STRING=Debug
 -DCMAKE_GENERATOR:STRING=Ninja
+-DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
 -DCMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     <value type="int" key="EnableQmlDebugging">0</value>
@@ -162,10 +162,10 @@
     <value type="int" key="CMake.Configure.BaseEnvironment">2</value>
     <value type="bool" key="CMake.Configure.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="CMake.Configure.UserEnvironmentChanges"/>
-    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
--DCMAKE_BUILD_TYPE:STRING=Release
--DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_BUILD_TYPE:STRING=Release
 -DCMAKE_GENERATOR:STRING=Ninja
+-DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
 -DCMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     <value type="QString" key="MerSpecFileAspect.Path"></value>
@@ -220,10 +220,10 @@
     <value type="int" key="CMake.Configure.BaseEnvironment">2</value>
     <value type="bool" key="CMake.Configure.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="CMake.Configure.UserEnvironmentChanges"/>
-    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
--DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
--DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
 -DCMAKE_GENERATOR:STRING=Ninja
+-DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
 -DCMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     <value type="QString" key="MerSpecFileAspect.Path"></value>
@@ -278,10 +278,10 @@
     <value type="int" key="CMake.Configure.BaseEnvironment">2</value>
     <value type="bool" key="CMake.Configure.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="CMake.Configure.UserEnvironmentChanges"/>
-    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
--DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
--DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
 -DCMAKE_GENERATOR:STRING=Ninja
+-DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
 -DCMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     <value type="int" key="EnableQmlDebugging">0</value>
@@ -337,10 +337,10 @@
     <value type="int" key="CMake.Configure.BaseEnvironment">2</value>
     <value type="bool" key="CMake.Configure.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="CMake.Configure.UserEnvironmentChanges"/>
-    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
--DCMAKE_BUILD_TYPE:STRING=MinSizeRel
--DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+    <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_BUILD_TYPE:STRING=MinSizeRel
 -DCMAKE_GENERATOR:STRING=Ninja
+-DCMAKE_PREFIX_PATH:STRING=%{Qt:QT_INSTALL_PREFIX}
+-DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}
 -DCMAKE_COLOR_DIAGNOSTICS:BOOL=ON
 -DQT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     <value type="QString" key="MerSpecFileAspect.Path"></value>
