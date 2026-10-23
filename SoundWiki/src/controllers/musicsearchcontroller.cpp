@@ -26,9 +26,7 @@ MusicSearchController::~MusicSearchController()
 
 void MusicSearchController::searchSounds(QString query)
 {
-    m_song_model->clear();
-    emit songModelChanged();
-
+    clear();
     m_music_client->searchSongs(query);
 }
 
@@ -62,3 +60,8 @@ void MusicSearchController::onServerError()
     emit serverError();
 }
 
+void MusicSearchController::clear()
+{
+    m_song_model->clear();
+    emit songModelChanged();
+}

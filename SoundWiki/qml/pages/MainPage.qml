@@ -112,16 +112,17 @@ Page {
         }
 
         placeholderText: qsTr("Enter a query...")
+
         EnterKey.onClicked: {
             searchField.focus = false
             searchTracks()
         }
 
         onTextChanged: {
-            noTracksFound = false
-            iconInfo.source = ""
-            labelInfo.text = ""
-            subLabelInfo.text = ""
+            if (text === "") {
+                musicSearchController.clear();
+                noTracksFound = false;
+            }
         }
     }
 

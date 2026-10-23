@@ -20,6 +20,7 @@ public:
     SongModel *songModel() const;
 
     Q_INVOKABLE void searchSounds(QString query);
+    Q_INVOKABLE void clear();
 signals:
     void songModelChanged();
     void songSearchFinished();
