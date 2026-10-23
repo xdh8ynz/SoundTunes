@@ -208,6 +208,11 @@ Page {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.topMargin: Theme.paddingMedium
 
+                        BusyIndicator{
+                            anchors.fill: parent
+                            running: albumCover.status === Image.Loading
+                        }
+
                         onStatusChanged: {
                             if (status === Image.Error)
                             {

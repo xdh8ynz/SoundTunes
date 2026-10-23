@@ -161,11 +161,17 @@ Page {
             spacing: Theme.paddingLarge
 
             Image {
+                id: trackCover
                 width: Theme.itemSizeMedium
                 height: Theme.itemSizeMedium
                 source: model.cover || "image://theme/icon-l-sound"
                 fillMode: Image.PreserveAspectCrop
                 anchors.verticalCenter: parent.verticalCenter
+
+                BusyIndicator{
+                    anchors.fill: parent
+                    running: trackCover.status === Image.Loading
+                }
 
                 onStatusChanged: {
                     if (status === Image.Error)
