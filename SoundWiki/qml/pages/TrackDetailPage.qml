@@ -158,6 +158,24 @@ Page {
                         width: parent.width
                     }
                 }
+
+                Column {
+                    width: parent.width
+                    spacing: Theme.paddingMedium
+
+                    Label{
+                        text: qsTr("Genre")
+                        font.bold: true
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                    }
+
+                    Label {
+                        text: track.genre ? track.genre : qsTr("Unknown genre")
+                        truncationMode: TruncationMode.Elide
+                        width: parent.width
+                    }
+                }
             }
 
             Item{
@@ -168,7 +186,7 @@ Page {
             Column{
                 id: albumComponent
                 width: parent.width
-                spacing: Theme.paddingMedium
+                spacing: Theme.paddingLarge
 
                 Label{
                     text: qsTr("Album")
@@ -188,6 +206,7 @@ Page {
                         source: track.cover || "image://theme/icon-l-sounds"
                         fillMode: Image.PreserveAspectCrop
                         anchors.verticalCenter: parent.verticalCenter
+                        anchors.topMargin: Theme.paddingMedium
 
                         onStatusChanged: {
                             if (status === Image.Error)
@@ -202,7 +221,7 @@ Page {
                         anchors.leftMargin: Theme.paddingLarge
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
-                        spacing: Theme.paddingSmall / 2
+                        spacing: Theme.paddingSmall + Theme.paddingMedium
 
                         Label {
                             text: track.albumName ? track.albumName : qsTr("Unknown title")
@@ -227,30 +246,6 @@ Page {
                     }
                 }
 
-            }
-
-            Item{
-                width: parent.width
-                height: Theme.paddingLarge
-            }
-
-            Column {
-                id: genreColumn
-                width: parent.width
-                spacing: Theme.paddingMedium
-
-                Label{
-                    text: qsTr("Genre")
-                    font.bold: true
-                    truncationMode: TruncationMode.Elide
-                    width: parent.width
-                }
-
-                Label {
-                    text: track.genre ? track.genre : qsTr("Unknown genre")
-                    truncationMode: TruncationMode.Elide
-                    width: parent.width
-                }
             }
 
             VerticalScrollDecorator { }
