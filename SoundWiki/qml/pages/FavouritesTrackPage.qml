@@ -64,7 +64,7 @@ Page {
         id: header
         headerText: qsTr("Favourites")
         background: false
-        headerClickable: true
+        headerClickable: false
     }
 
     SilicaListView {

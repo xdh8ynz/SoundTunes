@@ -39,7 +39,7 @@ Page {
         id: header
         headerText: qsTr("SoundWiki")
         background: false
-        headerClickable: true
+        headerClickable: false
         content: [
             AppBarSpacer { },
                 AppBarButton {

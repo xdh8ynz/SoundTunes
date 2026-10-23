@@ -69,7 +69,7 @@ Page {
         id: header
         headerText: qsTr("About track")
         background: false
-        headerClickable: true
+        headerClickable: false
         content: [
             AppBarSpacer { },
                 AppBarButton {
