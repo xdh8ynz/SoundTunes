@@ -81,6 +81,31 @@
         <source>Try writing it differently</source>
         <translation>Try writing it differently</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <source>The server is temporarily unavailable</source>
+        <translation>The server is temporarily unavailable</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <source>Try again later</source>
+        <translation>Try again later</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <source>A network error occurred</source>
+        <translation>A network error occurred</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <source>Check your Internet connection</source>
+        <translation>Check your Internet connection</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="188"/>
+        <source>An error occurred while trying to search tracks</source>
+        <translation>An error occurred while trying to search tracks</translation>
+    </message>
 </context>
 <context>
     <name>FavouritesTrackPage</name>

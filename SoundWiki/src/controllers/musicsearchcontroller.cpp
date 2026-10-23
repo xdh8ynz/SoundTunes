@@ -13,6 +13,11 @@ MusicSearchController::MusicSearchController(QObject *parent) : QObject(parent)
                      this, &MusicSearchController::onSearchFinished);
     QObject::connect(m_music_client.get(), &YandexMusicClient::onSongsSearchFailed,
                      this, &MusicSearchController::onSearchFailed);
+    QObject::connect(m_music_client.get(), &YandexMusicClient::onNetworkError,
+                     this, &MusicSearchController::onNetworkError);
+    QObject::connect(m_music_client.get(), &YandexMusicClient::onServerError,
+                     this, &MusicSearchController::onServerError);
+
 }
 
 MusicSearchController::~MusicSearchController()
@@ -42,5 +47,18 @@ void MusicSearchController::onSearchFinished(QList<Song> songs)
 void MusicSearchController::onSearchFailed()
 {
     qDebug() << "Не удалось получить список треков по запросу";
-    emit songSearchFinished();
+    emit songSearchFailed();
 }
+
+void MusicSearchController::onNetworkError()
+{
+    qDebug() << "Сетевая ошибка";
+    emit networkError();
+}
+
+void MusicSearchController::onServerError()
+{
+    qDebug() << "Ошибка со стороны сервера";
+    emit serverError();
+}
+

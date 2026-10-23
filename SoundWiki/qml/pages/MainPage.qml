@@ -8,23 +8,62 @@ Page {
 
     property bool isTryingSearch: false
     property bool noTracksFound: false
+    property bool errorWhenFound: false
     property var favouritesTracks: []
     property var songModel: musicSearchController.songModel
 
     function searchTracks()
     {
-        noTracksFound = false
-        isTryingSearch = true
+        noTracksFound = false;
+        isTryingSearch = true;
         musicSearchController.searchSounds(searchField.text.trim());
+    }
+
+    function updateInfoComponent(source, label, subLabel)
+    {
+        iconInfo.source = source;
+        labelInfo.text = label;
+        subLabelInfo.text = subLabel;
     }
 
     function handleSongSearchFinished()
     {
         if (songModel.rowCount() === 0)
         {
-            noTracksFound = true
+            noTracksFound = true;
+            updateInfoComponent("image://theme/icon-l-search",
+                                qsTr("They didn't find anything"),
+                                qsTr("Try writing it differently"));
         }
 
+        isTryingSearch = false;
+    }
+
+    function handleServerError()
+    {
+        noTracksFound = true;
+        updateInfoComponent("image://theme/icon-l-computer",
+                            qsTr("The server is temporarily unavailable"),
+                            qsTr("Try again later"));
+        isTryingSearch = false;
+    }
+
+
+    function handleNetworkError()
+    {
+        noTracksFound = true;
+        updateInfoComponent("image://theme/icon-l-wlan-3",
+                            qsTr("A network error occurred"),
+                            qsTr("Check your Internet connection"));
+        isTryingSearch = false;
+    }
+
+    function handleSongSearchFailed()
+    {
+        noTracksFound = true;
+        updateInfoComponent("image://theme/icon-l-diagnostic",
+                            qsTr("An error occurred while trying to search tracks"),
+                            qsTr("Try again later"));
         isTryingSearch = false;
     }
 
@@ -32,6 +71,15 @@ Page {
         target: musicSearchController
         onSongSearchFinished: {
             handleSongSearchFinished();
+        }
+        onServerError: {
+            handleServerError();
+        }
+        onNetworkError: {
+            handleNetworkError();
+        }
+        onSongSearchFailed: {
+            handleSongSearchFailed();
         }
     }
 
@@ -71,6 +119,9 @@ Page {
 
         onTextChanged: {
             noTracksFound = false
+            iconInfo.source = ""
+            labelInfo.text = ""
+            subLabelInfo.text = ""
         }
     }
 
@@ -167,22 +218,24 @@ Page {
         }
 
         Column {
-            id: absenceTrackComponent
+            id: infoComponent
             anchors.centerIn: parent
             width: parent.width
             spacing: Theme.paddingMedium
             visible: noTracksFound
 
             Image {
+                id: iconInfo
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: "image://theme/icon-l-search"
+                source: ""
                 width: Theme.itemSizeLarge
                 height: Theme.itemSizeLarge
                 opacity: 0.5
             }
 
             Label {
-                text: qsTr("They didn't find anything")
+                id: labelInfo
+                text: ""
                 font.pixelSize: Theme.fontSizeMedium
                 font.bold: true
                 horizontalAlignment: Text.AlignHCenter
@@ -191,7 +244,8 @@ Page {
             }
 
             Label {
-                text: qsTr("Try writing it differently")
+                id: subLabelInfo
+                text: ""
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.secondaryColor
                 horizontalAlignment: Text.AlignHCenter

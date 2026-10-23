@@ -18,6 +18,8 @@ public:
 signals:
     void onSongsSearchFailed();
     void onSongsSearchSuccess(QList<Song> songs);
+    void onNetworkError();
+    void onServerError();
 
 public slots:
     void onSongsReceived(QNetworkReply *reply);

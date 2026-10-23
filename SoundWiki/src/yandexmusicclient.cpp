@@ -50,14 +50,30 @@ void YandexMusicClient::onSongsReceived(QNetworkReply *reply)
     if (reply->error() == QNetworkReply::NetworkError::NoError)
     {
         QString response = QString(reply->readAll());
-
         emit onSongsSearchSuccess(parseSongsList(response));
+        return;
     }
-    else
-    {
-        qDebug() << "Ошибка запроса";
-        qDebug() << reply->errorString();
 
+    int code = static_cast<int>(reply->error());
+
+    qDebug() << "Ошибка запроса";
+    qDebug() << code;
+    qDebug() << reply->errorString();
+
+    if (code >= 0 && code <= 99)
+    {
+        // Сетевая ошибка
+        emit onNetworkError();
+
+    }
+    else if (code >= 401 && code <= 499)
+    {
+        // Ошибка сервера
+        emit onServerError();
+
+    }
+    else{
+        // Другие ошибки
         emit onSongsSearchFailed();
     }
 }

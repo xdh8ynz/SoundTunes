@@ -23,10 +23,15 @@ public:
 signals:
     void songModelChanged();
     void songSearchFinished();
+    void songSearchFailed();
+    void serverError();
+    void networkError();
 
 private slots:
     void onSearchFinished(QList<Song> songs);
     void onSearchFailed();
+    void onServerError();
+    void onNetworkError();
 
 private:
     std::unique_ptr<SongModel> m_song_model;
