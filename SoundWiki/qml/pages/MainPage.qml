@@ -12,6 +12,9 @@ Page {
 
     function searchTracks()
     {
+        noTracksFound = false;
+        isTryingSearch = true;
+
         var query = searchField.text.trim();
 
         if (query === "") {
@@ -91,7 +94,7 @@ Page {
 
     Timer{
         id: searchTimer
-        interval: 300
+        interval: 500
         running: false
         onTriggered: {
             searchTracks();
@@ -127,16 +130,12 @@ Page {
         placeholderText: qsTr("Enter a query...")
 
         EnterKey.onClicked: {
-            noTracksFound = false;
-            isTryingSearch = true;
             searchTimer.stop()
             searchField.focus = false
             searchTracks()
         }
 
         onTextChanged: {
-            noTracksFound = false;
-            isTryingSearch = true;
             searchTimer.restart()
         }
     }

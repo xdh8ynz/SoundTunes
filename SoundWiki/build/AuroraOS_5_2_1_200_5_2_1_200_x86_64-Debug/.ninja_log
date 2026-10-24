@@ -1,6 +1,6 @@
 # ninja log v5
-4	19	0	CMakeFiles/ru.ac.uniyar.SoundWiki_autogen	acdcdb55892a75c2
-4	19	0	ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp	acdcdb55892a75c2
+3	14	0	CMakeFiles/ru.ac.uniyar.SoundWiki_autogen	acdcdb55892a75c2
+3	14	0	ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp	acdcdb55892a75c2
 51	704	1792852033142428875	CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/songalbum.cpp.o	e56780cb59b0e7e1
 8	19	1792776480244865877	SoundWiki-ru.qm	20b52cf56916fd21
 48	1065	1792859114604013142	CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/controllers/musicsearchcontroller.cpp.o	a9bd7f44e57e5549
@@ -10,10 +10,10 @@
 48	1175	1792859114714006040	CMakeFiles/ru.ac.uniyar.SoundWiki.dir/ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp.o	537fc7251ed21987
 14	1989	1792859465750411145	CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/yandexmusicclient.cpp.o	1180ad0475b9eb58
 48	2016	1792859115553951831	CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/main.cpp.o	bbe70d8ceb7afb76
-19	40	0	CMakeFiles/install.util	e358d323c03db493
+14	30	0	CMakeFiles/install.util	e358d323c03db493
 1414	2002	1792861343479813332	ru.ac.uniyar.SoundWiki	aab7a564da7c4d9b
-4	15	0	CMakeFiles/ru.ac.uniyar.SoundWiki_autogen	acdcdb55892a75c2
-4	15	0	ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp	acdcdb55892a75c2
-3	16	0	CMakeFiles/ru.ac.uniyar.SoundWiki_autogen	acdcdb55892a75c2
-3	16	0	ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp	acdcdb55892a75c2
-16	33	0	CMakeFiles/install.util	e358d323c03db493
+4	12	0	CMakeFiles/ru.ac.uniyar.SoundWiki_autogen	acdcdb55892a75c2
+4	12	0	ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp	acdcdb55892a75c2
+2	10	0	CMakeFiles/ru.ac.uniyar.SoundWiki_autogen	acdcdb55892a75c2
+2	10	0	ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp	acdcdb55892a75c2
+10	22	0	CMakeFiles/install.util	e358d323c03db493
