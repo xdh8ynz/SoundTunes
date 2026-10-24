@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_YandexMusicClient_t {
-    QByteArrayData data[11];
-    char stringdata0[144];
+    QByteArrayData data[12];
+    char stringdata0[166];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,13 +40,15 @@ QT_MOC_LITERAL(6, 78, 14), // "onNetworkError"
 QT_MOC_LITERAL(7, 93, 13), // "onServerError"
 QT_MOC_LITERAL(8, 107, 15), // "onSongsReceived"
 QT_MOC_LITERAL(9, 123, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(10, 138, 5) // "reply"
+QT_MOC_LITERAL(10, 138, 5), // "reply"
+QT_MOC_LITERAL(11, 144, 21) // "onSearchTimerFinished"
 
     },
     "YandexMusicClient\0onSongsSearchFailed\0"
     "\0onSongsSearchSuccess\0QList<Song>\0"
     "songs\0onNetworkError\0onServerError\0"
-    "onSongsReceived\0QNetworkReply*\0reply"
+    "onSongsReceived\0QNetworkReply*\0reply\0"
+    "onSearchTimerFinished"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +58,7 @@ static const uint qt_meta_data_YandexMusicClient[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,13 +66,14 @@ static const uint qt_meta_data_YandexMusicClient[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06 /* Public */,
-       3,    1,   40,    2, 0x06 /* Public */,
-       6,    0,   43,    2, 0x06 /* Public */,
-       7,    0,   44,    2, 0x06 /* Public */,
+       1,    0,   44,    2, 0x06 /* Public */,
+       3,    1,   45,    2, 0x06 /* Public */,
+       6,    0,   48,    2, 0x06 /* Public */,
+       7,    0,   49,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    1,   45,    2, 0x0a /* Public */,
+       8,    1,   50,    2, 0x0a /* Public */,
+      11,    0,   53,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -80,6 +83,7 @@ static const uint qt_meta_data_YandexMusicClient[] = {
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -95,6 +99,7 @@ void YandexMusicClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 2: _t->onNetworkError(); break;
         case 3: _t->onServerError(); break;
         case 4: _t->onSongsReceived((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 5: _t->onSearchTimerFinished(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -174,13 +179,13 @@ int YandexMusicClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

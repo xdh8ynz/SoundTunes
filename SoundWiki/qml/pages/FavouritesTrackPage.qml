@@ -14,13 +14,6 @@ Page {
         loadFavouritesTracks()
     }
 
-    onStatusChanged: {
-        if (status === PageStatus.Active)
-        {
-            loadFavouritesTracks()
-        }
-    }
-
     function loadFavouritesTracks()
     {
         isLoadingTracks = true
@@ -101,76 +94,90 @@ Page {
         }
     }
 
-    RemorsePopup {
-        id: remorse
-    }
+        Row {
+            id: trackRow
 
-    Row {
-        id: trackRow
-
-        anchors {
-            fill: parent
-            margins: Theme.paddingLarge
-        }
-
-        spacing: Theme.paddingLarge
-
-        Image {
-            id: trackCover
-            width: Theme.itemSizeMedium
-            height: Theme.itemSizeMedium
-            source: model.cover || "image://theme/icon-l-sound"
-            fillMode: Image.PreserveAspectCrop
-            anchors.verticalCenter: parent.verticalCenter
-            asynchronous: true
-
-            BusyIndicator{
-                anchors.fill: parent
-                running: trackCover.status === Image.Loading
+            anchors {
+                fill: parent
+                margins: Theme.paddingLarge
             }
 
-            onStatusChanged: {
-                if (status === Image.Error)
-                {
-                    source = "image://theme/icon-l-sound"
+            spacing: Theme.paddingLarge
+
+            Image {
+                id: trackCover
+                width: Theme.itemSizeMedium
+                height: Theme.itemSizeMedium
+                source: model.cover || "image://theme/icon-l-sound"
+                fillMode: Image.PreserveAspectCrop
+                anchors.verticalCenter: parent.verticalCenter
+                asynchronous: true
+
+                BusyIndicator{
+                    id: indicator
+                    anchors.fill: parent
+                    running: trackCover.status === Image.Loading
+                }
+
+                Timer {
+                    interval: 1000
+                    running: trackCover.status === Image.Loading
+                    onTriggered: {
+                        if (trackCover.status === Image.Loading) {
+                            trackCover.source = "image://theme/icon-l-sound"
+                        }
+                        indicator.running = false
+                    }
+                }
+
+                onStatusChanged: {
+                    if (status === Image.Error)
+                    {
+                        source = "image://theme/icon-l-sound"
+                    }
                 }
             }
-        }
 
-        Column {
-            anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - Theme.itemSizeMedium - Theme.paddingLarge * 2
-            spacing: Theme.paddingSmall / 2
+            Column {
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width - Theme.itemSizeMedium - Theme.paddingLarge * 2
+                spacing: Theme.paddingSmall / 2
 
-            Label {
-                text: model.title ? model.title : qsTr("Unknown title")
-                font.pixelSize: Theme.fontSizeMedium
-                font.bold: true
-                color: Theme.highlightColor
-                truncationMode: TruncationMode.Elide
-                width: parent.width
-            }
+                Label {
+                    text: model.title ? model.title : qsTr("Unknown title")
+                    font.pixelSize: Theme.fontSizeMedium
+                    font.bold: true
+                    color: Theme.highlightColor
+                    truncationMode: TruncationMode.Elide
+                    width: parent.width
+                }
 
-            Label {
-                text: model.artist ? model.artist : qsTr("Unknown artist")
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
-                truncationMode: TruncationMode.Elide
-                width: parent.width
-            }
+                Label {
+                    text: model.artist ? model.artist : qsTr("Unknown artist")
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.primaryColor
+                    truncationMode: TruncationMode.Elide
+                    width: parent.width
+                }
 
-            Label {
-                text: model.genre ? model.genre : qsTr("Unknown genre")
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.secondaryColor
-                truncationMode: TruncationMode.Elide
-                width: parent.width
+                Label {
+                    text: model.genre ? model.genre : qsTr("Unknown genre")
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                    truncationMode: TruncationMode.Elide
+                    width: parent.width
+                }
             }
         }
     }
 
     VerticalScrollDecorator {}
+
+
+    RemorsePopup {
+        id: remorse
     }
+
 
     BusyIndicator {
         anchors.centerIn: parent

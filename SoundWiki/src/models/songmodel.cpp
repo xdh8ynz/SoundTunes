@@ -20,7 +20,7 @@ int SongModel::rowCount(const QModelIndex &parent) const
 
 QVariant SongModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    if (!isCorrectIndex(index))
     {
         return QVariant();
     }
@@ -77,7 +77,7 @@ QVariant SongModel::data(const QModelIndex &index, int role) const
     }
 }
 
-bool SongModel::isCorrectIndex(QModelIndex index)
+bool SongModel::isCorrectIndex(QModelIndex index) const
 {
     if (!index.isValid())
     {

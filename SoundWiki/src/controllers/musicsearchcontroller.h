@@ -21,6 +21,7 @@ public:
 
     Q_INVOKABLE void searchSounds(QString query);
     Q_INVOKABLE void clear();
+    Q_INVOKABLE void cancelSearch();
 signals:
     void songModelChanged();
     void songSearchFinished();

@@ -8,11 +8,16 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QTimer>
 
 YandexMusicClient::YandexMusicClient(QObject *parent) : QObject(parent)
 {
     m_manager.reset(new QNetworkAccessManager());
     m_reply.reset();
+    m_timer.reset(new QTimer(this));
+    m_timer->setInterval(SearchIntervalMs);
+    m_timer->setSingleShot(true);
+    connect(m_timer.get(), &QTimer::timeout, this, &YandexMusicClient::onSearchTimerFinished);
 }
 
 YandexMusicClient::~YandexMusicClient()
@@ -26,7 +31,7 @@ void YandexMusicClient::searchSongs(QString query)
     QUrlQuery url_query;
 
     url_query.addQueryItem("text", query);
-    url_query.addQueryItem("page", 0);
+    url_query.addQueryItem("page", QStringLiteral("0"));
     url_query.addQueryItem("type", "track");
     url_query.addQueryItem("nococrrect", "false");
     url.setUrl("https://api.music.yandex.net/search");
@@ -35,21 +40,40 @@ void YandexMusicClient::searchSongs(QString query)
     request.setUrl(url);
     request.setRawHeader("Accept", "application/json");
 
-    if (m_reply && m_reply->isRunning())
-    {
-        m_reply->disconnect();
-        m_reply->abort();
-    }
+    cancelSearch();
 
     m_reply.reset(m_manager->get(request));
-
     QNetworkReply* reply = m_reply.get();
 
     connect(reply, &QNetworkReply::finished, this,
             [this, reply]()
             {
+                m_timer->stop();
                 onSongsReceived(reply);
             });
+
+    m_timer->start();
+}
+
+void YandexMusicClient::onSearchTimerFinished()
+{
+    cancelSearch();
+    emit onNetworkError();
+}
+
+void YandexMusicClient::cancelSearch()
+{
+    if (m_reply && m_reply->isRunning())
+    {
+        m_reply->disconnect(this);
+        m_reply->abort();
+        m_reply.reset();
+    }
+
+    if (m_timer->isActive())
+    {
+        m_timer->stop();
+    }
 }
 
 void YandexMusicClient::onSongsReceived(QNetworkReply *reply)
@@ -67,20 +91,17 @@ void YandexMusicClient::onSongsReceived(QNetworkReply *reply)
     qDebug() << code;
     qDebug() << reply->errorString();
 
-    if (code >= 0 && code <= 99)
+    if (code >= MinNetworkCode && code <= MaxNetworkCode)
     {
-        // Сетевая ошибка
         emit onNetworkError();
 
     }
-    else if (code >= 401 && code <= 499)
+    else if (code >= MinServerCode && code <= MaxServerCode)
     {
-        // Ошибка сервера
         emit onServerError();
 
     }
     else{
-        // Другие ошибки
         emit onSongsSearchFailed();
     }
 }

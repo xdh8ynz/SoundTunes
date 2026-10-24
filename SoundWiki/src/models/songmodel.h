@@ -37,7 +37,7 @@ public:
 private:
     QList<Song> m_songs;
 
-    bool isCorrectIndex(QModelIndex index);
+    bool isCorrectIndex(QModelIndex index) const;
 };
 
 #endif // SONGMODEL_H

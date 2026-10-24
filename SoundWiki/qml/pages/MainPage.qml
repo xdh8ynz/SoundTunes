@@ -8,15 +8,20 @@ Page {
 
     property bool isTryingSearch: false
     property bool noTracksFound: false
-    property bool errorWhenFound: false
-    property var favouritesTracks: []
     property var songModel: musicSearchController.songModel
 
     function searchTracks()
     {
-        noTracksFound = false;
-        isTryingSearch = true;
-        musicSearchController.searchSounds(searchField.text.trim());
+        var query = searchField.text.trim();
+
+        if (query === "") {
+            musicSearchController.cancelSearch();
+            noTracksFound = false;
+            isTryingSearch = false;
+        }
+        else{
+            musicSearchController.searchSounds(query);
+        }
     }
 
     function updateInfoComponent(source, label, subLabel)
@@ -38,6 +43,7 @@ Page {
 
         isTryingSearch = false;
     }
+
 
     function handleServerError()
     {
@@ -85,16 +91,10 @@ Page {
 
     Timer{
         id: searchTimer
-        interval: 500
+        interval: 300
         running: false
         onTriggered: {
-            if (searchField.text.trim() === "") {
-                noTracksFound = false;
-                musicSearchController.clear();
-            }
-            else{
-                searchTracks(searchField.text)
-            }
+            searchTracks();
         }
     }
 
@@ -107,9 +107,7 @@ Page {
             AppBarSpacer { },
                 AppBarButton {
                     icon.source: "image://theme/icon-splus-favorite-selected"
-                    onClicked: pageStack.push("FavouritesTrackPage.qml", {
-                                     tracks: favouritesTracks,
-                                 })
+                    onClicked: pageStack.push("FavouritesTrackPage.qml")
             }
         ]
     }
@@ -129,12 +127,16 @@ Page {
         placeholderText: qsTr("Enter a query...")
 
         EnterKey.onClicked: {
+            noTracksFound = false;
+            isTryingSearch = true;
             searchTimer.stop()
             searchField.focus = false
             searchTracks()
         }
 
         onTextChanged: {
+            noTracksFound = false;
+            isTryingSearch = true;
             searchTimer.restart()
         }
     }
@@ -227,9 +229,9 @@ Page {
                 }
             }
         }
+    }
 
         VerticalScrollDecorator {}
-    }
 
         BusyIndicator {
             anchors.centerIn: parent

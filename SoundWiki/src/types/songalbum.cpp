@@ -3,6 +3,9 @@
 Album::Album()
 {
     m_album_id = -1;
+    m_year = -1;
+    m_count_tracks = -1;
+    m_title = "";
     m_cover = "";
     m_genre = "";
 }

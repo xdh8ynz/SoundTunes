@@ -17,7 +17,6 @@ MusicSearchController::MusicSearchController(QObject *parent) : QObject(parent)
                      this, &MusicSearchController::onNetworkError);
     QObject::connect(m_music_client.get(), &YandexMusicClient::onServerError,
                      this, &MusicSearchController::onServerError);
-
 }
 
 MusicSearchController::~MusicSearchController()
@@ -28,6 +27,12 @@ void MusicSearchController::searchSounds(QString query)
 {
     clear();
     m_music_client->searchSongs(query);
+}
+
+void MusicSearchController::cancelSearch()
+{
+    m_music_client->cancelSearch();
+    clear();
 }
 
 SongModel *MusicSearchController::songModel() const

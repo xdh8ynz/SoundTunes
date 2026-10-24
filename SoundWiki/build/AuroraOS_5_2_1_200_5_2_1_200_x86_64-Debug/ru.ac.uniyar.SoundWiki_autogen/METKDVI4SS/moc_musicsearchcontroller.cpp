@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MusicSearchController_t {
-    QByteArrayData data[18];
-    char stringdata0[226];
+    QByteArrayData data[19];
+    char stringdata0[239];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,8 +46,9 @@ QT_MOC_LITERAL(12, 165, 14), // "onNetworkError"
 QT_MOC_LITERAL(13, 180, 12), // "searchSounds"
 QT_MOC_LITERAL(14, 193, 5), // "query"
 QT_MOC_LITERAL(15, 199, 5), // "clear"
-QT_MOC_LITERAL(16, 205, 9), // "songModel"
-QT_MOC_LITERAL(17, 215, 10) // "SongModel*"
+QT_MOC_LITERAL(16, 205, 12), // "cancelSearch"
+QT_MOC_LITERAL(17, 218, 9), // "songModel"
+QT_MOC_LITERAL(18, 228, 10) // "SongModel*"
 
     },
     "MusicSearchController\0songModelChanged\0"
@@ -55,7 +56,8 @@ QT_MOC_LITERAL(17, 215, 10) // "SongModel*"
     "serverError\0networkError\0onSearchFinished\0"
     "QList<Song>\0songs\0onSearchFailed\0"
     "onServerError\0onNetworkError\0searchSounds\0"
-    "query\0clear\0songModel\0SongModel*"
+    "query\0clear\0cancelSearch\0songModel\0"
+    "SongModel*"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,29 +67,30 @@ static const uint qt_meta_data_MusicSearchController[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
-       1,   84, // properties
+      12,   14, // methods
+       1,   90, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x06 /* Public */,
-       3,    0,   70,    2, 0x06 /* Public */,
-       4,    0,   71,    2, 0x06 /* Public */,
-       5,    0,   72,    2, 0x06 /* Public */,
-       6,    0,   73,    2, 0x06 /* Public */,
+       1,    0,   74,    2, 0x06 /* Public */,
+       3,    0,   75,    2, 0x06 /* Public */,
+       4,    0,   76,    2, 0x06 /* Public */,
+       5,    0,   77,    2, 0x06 /* Public */,
+       6,    0,   78,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    1,   74,    2, 0x08 /* Private */,
-      10,    0,   77,    2, 0x08 /* Private */,
-      11,    0,   78,    2, 0x08 /* Private */,
-      12,    0,   79,    2, 0x08 /* Private */,
+       7,    1,   79,    2, 0x08 /* Private */,
+      10,    0,   82,    2, 0x08 /* Private */,
+      11,    0,   83,    2, 0x08 /* Private */,
+      12,    0,   84,    2, 0x08 /* Private */,
 
  // methods: name, argc, parameters, tag, flags
-      13,    1,   80,    2, 0x02 /* Public */,
-      15,    0,   83,    2, 0x02 /* Public */,
+      13,    1,   85,    2, 0x02 /* Public */,
+      15,    0,   88,    2, 0x02 /* Public */,
+      16,    0,   89,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -105,9 +108,10 @@ static const uint qt_meta_data_MusicSearchController[] = {
  // methods: parameters
     QMetaType::Void, QMetaType::QString,   14,
     QMetaType::Void,
+    QMetaType::Void,
 
  // properties: name, type, flags
-      16, 0x80000000 | 17, 0x00495009,
+      17, 0x80000000 | 18, 0x00495009,
 
  // properties: notify_signal_id
        0,
@@ -132,6 +136,7 @@ void MusicSearchController::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 8: _t->onNetworkError(); break;
         case 9: _t->searchSounds((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 10: _t->clear(); break;
+        case 11: _t->cancelSearch(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -231,13 +236,13 @@ int MusicSearchController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
