@@ -210,8 +210,20 @@ Page {
                         asynchronous: true
 
                         BusyIndicator{
+                            id: indicator
                             anchors.fill: parent
                             running: albumCover.status === Image.Loading
+                        }
+
+                        Timer {
+                            interval: 1000
+                            running: albumCover.status === Image.Loading
+                            onTriggered: {
+                                if (albumCover.status === Image.Loading) {
+                                    albumCover.source = "image://theme/icon-l-sound"
+                                }
+                                indicator.running = false
+                            }
                         }
 
                         onStatusChanged: {
