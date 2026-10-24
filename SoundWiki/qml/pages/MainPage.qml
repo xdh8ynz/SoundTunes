@@ -94,7 +94,7 @@ Page {
 
     Timer{
         id: searchTimer
-        interval: 500
+        interval: 300
         running: false
         onTriggered: {
             searchTracks();
