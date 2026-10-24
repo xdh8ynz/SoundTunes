@@ -2,6 +2,7 @@
 #define YANDEXMUSICCLIENT_H
 
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
 #include <QJsonObject>
 #include <memory>
 #include "types/song.h"
@@ -29,6 +30,7 @@ private:
     static constexpr int CoverSize = 600;
 
     std::unique_ptr<QNetworkAccessManager> m_manager;
+    std::unique_ptr<QNetworkReply> m_reply;
 
     QList<Song> parseSongsList(QString response);
     Song parseSongObject(QJsonObject song_object);

@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MusicSearchController_t {
-    QByteArrayData data[17];
-    char stringdata0[220];
+    QByteArrayData data[18];
+    char stringdata0[226];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,8 +45,9 @@ QT_MOC_LITERAL(11, 151, 13), // "onServerError"
 QT_MOC_LITERAL(12, 165, 14), // "onNetworkError"
 QT_MOC_LITERAL(13, 180, 12), // "searchSounds"
 QT_MOC_LITERAL(14, 193, 5), // "query"
-QT_MOC_LITERAL(15, 199, 9), // "songModel"
-QT_MOC_LITERAL(16, 209, 10) // "SongModel*"
+QT_MOC_LITERAL(15, 199, 5), // "clear"
+QT_MOC_LITERAL(16, 205, 9), // "songModel"
+QT_MOC_LITERAL(17, 215, 10) // "SongModel*"
 
     },
     "MusicSearchController\0songModelChanged\0"
@@ -54,7 +55,7 @@ QT_MOC_LITERAL(16, 209, 10) // "SongModel*"
     "serverError\0networkError\0onSearchFinished\0"
     "QList<Song>\0songs\0onSearchFailed\0"
     "onServerError\0onNetworkError\0searchSounds\0"
-    "query\0songModel\0SongModel*"
+    "query\0clear\0songModel\0SongModel*"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,28 +65,29 @@ static const uint qt_meta_data_MusicSearchController[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
-       1,   78, // properties
+      11,   14, // methods
+       1,   84, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x06 /* Public */,
-       3,    0,   65,    2, 0x06 /* Public */,
-       4,    0,   66,    2, 0x06 /* Public */,
-       5,    0,   67,    2, 0x06 /* Public */,
-       6,    0,   68,    2, 0x06 /* Public */,
+       1,    0,   69,    2, 0x06 /* Public */,
+       3,    0,   70,    2, 0x06 /* Public */,
+       4,    0,   71,    2, 0x06 /* Public */,
+       5,    0,   72,    2, 0x06 /* Public */,
+       6,    0,   73,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    1,   69,    2, 0x08 /* Private */,
-      10,    0,   72,    2, 0x08 /* Private */,
-      11,    0,   73,    2, 0x08 /* Private */,
-      12,    0,   74,    2, 0x08 /* Private */,
+       7,    1,   74,    2, 0x08 /* Private */,
+      10,    0,   77,    2, 0x08 /* Private */,
+      11,    0,   78,    2, 0x08 /* Private */,
+      12,    0,   79,    2, 0x08 /* Private */,
 
  // methods: name, argc, parameters, tag, flags
-      13,    1,   75,    2, 0x02 /* Public */,
+      13,    1,   80,    2, 0x02 /* Public */,
+      15,    0,   83,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -102,9 +104,10 @@ static const uint qt_meta_data_MusicSearchController[] = {
 
  // methods: parameters
     QMetaType::Void, QMetaType::QString,   14,
+    QMetaType::Void,
 
  // properties: name, type, flags
-      15, 0x80000000 | 16, 0x00495009,
+      16, 0x80000000 | 17, 0x00495009,
 
  // properties: notify_signal_id
        0,
@@ -128,6 +131,7 @@ void MusicSearchController::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 7: _t->onServerError(); break;
         case 8: _t->onNetworkError(); break;
         case 9: _t->searchSounds((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 10: _t->clear(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -227,13 +231,13 @@ int MusicSearchController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty

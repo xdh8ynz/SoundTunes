@@ -83,6 +83,21 @@ Page {
         }
     }
 
+    Timer{
+        id: searchTimer
+        interval: 500
+        running: false
+        onTriggered: {
+            if (searchField.text.trim() === "") {
+                noTracksFound = false;
+                musicSearchController.clear();
+            }
+            else{
+                searchTracks(searchField.text)
+            }
+        }
+    }
+
     AppBar {
         id: header
         headerText: qsTr("SoundWiki")
@@ -114,15 +129,13 @@ Page {
         placeholderText: qsTr("Enter a query...")
 
         EnterKey.onClicked: {
+            searchTimer.stop()
             searchField.focus = false
             searchTracks()
         }
 
         onTextChanged: {
-            if (text === "") {
-                musicSearchController.clear();
-                noTracksFound = false;
-            }
+            searchTimer.restart()
         }
     }
 

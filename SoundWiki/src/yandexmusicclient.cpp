@@ -12,6 +12,7 @@
 YandexMusicClient::YandexMusicClient(QObject *parent) : QObject(parent)
 {
     m_manager.reset(new QNetworkAccessManager());
+    m_reply.reset();
 }
 
 YandexMusicClient::~YandexMusicClient()
@@ -34,15 +35,21 @@ void YandexMusicClient::searchSongs(QString query)
     request.setUrl(url);
     request.setRawHeader("Accept", "application/json");
 
-    QNetworkReply *reply = m_manager->get(request);
+    if (m_reply && m_reply->isRunning())
+    {
+        m_reply->disconnect();
+        m_reply->abort();
+    }
+
+    m_reply.reset(m_manager->get(request));
+
+    QNetworkReply* reply = m_reply.get();
 
     connect(reply, &QNetworkReply::finished, this,
             [this, reply]()
             {
                 onSongsReceived(reply);
             });
-
-    connect(reply, &QNetworkReply::finished, reply, &QObject::deleteLater);
 }
 
 void YandexMusicClient::onSongsReceived(QNetworkReply *reply)
