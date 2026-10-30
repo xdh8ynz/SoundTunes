@@ -52,7 +52,9 @@ Page {
 
             imageCacheManager.save(track.cover)
         }
+
         isLikedTrack = !isLikedTrack
+        pageStack.pop()
     }
 
     function checkTrackInDatabase()
