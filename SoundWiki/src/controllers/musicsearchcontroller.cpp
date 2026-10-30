@@ -70,3 +70,9 @@ void MusicSearchController::clear()
     m_song_model->clear();
     emit songModelChanged();
 }
+
+void MusicSearchController::updatePath(int songId, QString path)
+{
+    m_song_model->updatePath(songId, path);
+    emit songModelChanged();
+}

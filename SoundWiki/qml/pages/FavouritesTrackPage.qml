@@ -10,8 +10,11 @@ Page {
     property var tracks: []
     property bool isLoadingTracks: true
 
-    Component.onCompleted: {
-        loadFavouritesTracks()
+    onStatusChanged: {
+        if (status === PageStatus.Active)
+        {
+            loadFavouritesTracks()
+        }
     }
 
     function loadFavouritesTracks()
@@ -22,12 +25,14 @@ Page {
         for (var i = 0; i < songs.length; i++)
         {
             var song = songs.item(i);
+
             trackModel.append({
             songId: song.id,
             title: song.title,
             artist: song.artist,
             genre: song.genre,
             cover: song.cover,
+            path: song.path,
             duration: song.duration,
             albumId: song.albumId,
             albumName: song.albumName,
@@ -39,10 +44,11 @@ Page {
         isLoadingTracks = false
     }
 
-    function removeTrack(index, id)
+    function removeTrack(index, id, path)
     {
         dao.deleteSong(id)
         trackModel.remove(index)
+        imageCacheManager.clear(path);
     }
 
     Dao {
@@ -88,7 +94,7 @@ Page {
                 text: qsTr("Delete")
                 onClicked: {
                     remorse.execute("Are you sure you want to remove track?",
-                    function() { removeTrack(model.index, model.songId) }
+                    function() { removeTrack(model.index, model.songId, model.path) }
                 )
             }
         }
@@ -108,7 +114,7 @@ Page {
                 id: trackCover
                 width: Theme.itemSizeMedium
                 height: Theme.itemSizeMedium
-                source: model.cover || "image://theme/icon-l-sound"
+                source: model.path || model.cover || "image://theme/icon-l-sounds"
                 fillMode: Image.PreserveAspectCrop
                 anchors.verticalCenter: parent.verticalCenter
                 asynchronous: true

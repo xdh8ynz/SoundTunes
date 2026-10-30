@@ -57,6 +57,11 @@
 	"HEADERS" : 
 	[
 		[
+			"/workspace/SoundWiki/SoundWiki/imagecachemanager.h",
+			"Mu",
+			"EWIEGA46WW/moc_imagecachemanager.cpp"
+		],
+		[
 			"/workspace/SoundWiki/SoundWiki/src/controllers/musicsearchcontroller.h",
 			"Mu",
 			"METKDVI4SS/moc_musicsearchcontroller.cpp"
@@ -137,6 +142,7 @@
 	"SETTINGS_FILE" : "/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/ru.ac.uniyar.SoundWiki_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/workspace/SoundWiki/SoundWiki/imagecachemanager.cpp", "Mu" ],
 		[
 			"/workspace/SoundWiki/SoundWiki/src/controllers/musicsearchcontroller.cpp",
 			"Mu"

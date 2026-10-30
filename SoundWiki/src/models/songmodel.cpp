@@ -50,6 +50,9 @@ QVariant SongModel::data(const QModelIndex &index, int role) const
         {
             return album.getCover();
         }
+        case PathRole: {
+            return song.getPath();
+        }
         case DurationRole:
         {
             return song.getDuration();
@@ -100,6 +103,7 @@ QHash<int, QByteArray> SongModel::roleNames() const
     roles[ArtistRole] = "artist";
     roles[GenreRole] = "genre";
     roles[CoverRole] = "cover";
+    roles[PathRole] = "path";
     roles[DurationRole] = "duration";
     roles[AlbumIdRole] = "albumId";
     roles[AlbumNameRole] = "albumName";
@@ -121,4 +125,17 @@ void SongModel::updateSongs(QList<Song> songs)
     m_songs.clear();
     m_songs.append(songs);
     endResetModel();
+}
+
+bool SongModel::updatePath(int songId, const QString &path)
+{
+    for (int row = 0; row < m_songs.size(); ++row) {
+        if (m_songs[row].getSongId() == songId) {
+            m_songs[row].updatePath(path);
+            const QModelIndex idx = index(row, 0);
+            emit dataChanged(idx, idx, {Qt::DisplayRole});
+            return true;
+        }
+    }
+    return false;
 }

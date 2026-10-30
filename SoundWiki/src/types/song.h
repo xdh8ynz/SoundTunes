@@ -20,13 +20,17 @@ public:
     int getDuration() const;
     QString getTitle() const;
     QString getArtist() const;
+    QString getPath() const;
     Album getAlbum() const;
+
+    void updatePath(QString path);
 
 private:
     int m_song_id;
     int m_duration;
     QString m_title;
     QString m_artist;
+    QString m_path;
     Album m_album;
 };
 

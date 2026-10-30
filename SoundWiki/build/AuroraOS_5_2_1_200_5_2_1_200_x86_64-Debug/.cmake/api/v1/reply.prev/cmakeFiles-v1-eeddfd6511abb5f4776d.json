@@ -1,0 +1,210 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/3.19.3/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/3.19.3/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5/Qt5ConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5/Qt5Config.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Core/Qt5CoreConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Core/Qt5CoreConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Core/Qt5CoreConfigExtras.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Core/Qt5CoreMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Network/Qt5NetworkConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Qml/Qt5QmlConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Qml/Qt5QmlConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Qml/Qt5QmlConfigExtras.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Gui/Qt5GuiConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Quick/Qt5QuickConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Quick/Qt5QuickConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5LinguistTools/Qt5LinguistToolsConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5LinguistTools/Qt5LinguistToolsConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5LinguistTools/Qt5LinguistToolsMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/lib64/cmake/Qt5Network/Qt5NetworkConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/asus/AuroraOS/sdk/5.2.1.200/targets/x86_64-meego-linux-gnu/usr/share/cmake/Modules/FindPackageMessage.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/home/asus/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug",
+		"source" : "/home/asus/SoundWiki/SoundWiki"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

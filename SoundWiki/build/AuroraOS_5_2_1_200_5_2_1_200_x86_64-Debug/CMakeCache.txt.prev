@@ -215,9 +215,6 @@ QT_QMAKE_EXECUTABLE:STRING=/home/asus/AuroraOS/sdk/5.2.1.200/tools/qmake-x86_64
 //The directory containing a CMake configuration file for Qt5Core.
 Qt5Core_DIR:PATH=/usr/lib64/cmake/Qt5Core
 
-//The directory containing a CMake configuration file for Qt5DBus.
-Qt5DBus_DIR:PATH=/usr/lib64/cmake/Qt5DBus
-
 //The directory containing a CMake configuration file for Qt5Gui.
 Qt5Gui_DIR:PATH=/usr/lib64/cmake/Qt5Gui
 

@@ -12,6 +12,7 @@ QtObject {
              "artist TEXT, " +
              "genre TEXT, " +
              "cover TEXT, " +
+             "path TEXT, " +
              "duration INTEGER, " +
              "albumId INTEGER, " +
              "albumName TEXT, " +
@@ -28,16 +29,16 @@ QtObject {
     }
 
     function insertSong(song_id, title, artist,
-                        genre, cover, duration,
+                        genre, cover, path, duration,
                         album_id, album_name, album_year,
                         count_tracks) {
         db.transaction(function (tx) {
             tx.executeSql(
                  "INSERT INTO song (id, title, artist, genre,
-                 cover, duration, albumId, albumName,
+                 cover, path, duration, albumId, albumName,
                  albumYear, countTracks) " +
-                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                 [song_id, title, artist, genre, cover, duration,
+                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                 [song_id, title, artist, genre, cover, path, duration,
                  album_id, album_name, album_year, count_tracks]
             );
         });
@@ -59,6 +60,13 @@ QtObject {
     {
         db.transaction(function (tx) {
             tx.executeSql("DELETE FROM song WHERE id = ?;", [id])
+        });
+    }
+
+    function setPath(id, path)
+    {
+        db.transaction(function (tx) {
+            tx.executeSql("UPDATE song SET path = ? WHERE id = ?;", [path, id])
         });
     }
 

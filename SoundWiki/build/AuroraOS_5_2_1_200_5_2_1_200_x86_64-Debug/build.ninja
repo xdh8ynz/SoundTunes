@@ -170,6 +170,14 @@ build CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/songalbum.cpp.o: CXX_COMPI
   OBJECT_DIR = CMakeFiles/ru.ac.uniyar.SoundWiki.dir
   OBJECT_FILE_DIR = CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types
 
+build CMakeFiles/ru.ac.uniyar.SoundWiki.dir/imagecachemanager.cpp.o: CXX_COMPILER__ru.2eac.2euniyar.2eSoundWiki_Debug ../../imagecachemanager.cpp || cmake_object_order_depends_target_ru.ac.uniyar.SoundWiki
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_QML_DEBUG -DQT_QML_LIB -DQT_QUICK_LIB
+  DEP_FILE = CMakeFiles/ru.ac.uniyar.SoundWiki.dir/imagecachemanager.cpp.o.d
+  FLAGS = -g -pipe -Wp,-U_FORTIFY_SOURCE,-D_FORTIFY_SOURCE=3 -specs=/usr/lib/rpm/aurora/pie-pic-cc1 -fstack-protector-strong --param=ssp-buffer-size=4 -fexceptions -O2 -Wall -Wformat -Wformat-security -m64 -mtune=generic -DQT_QML_DEBUG -g -fPIC
+  INCLUDES = -I. -I../../ -Iru.ac.uniyar.SoundWiki_autogen/include -I/usr/include/auroraapp -I/usr/include/appdir-cpp -I/usr/include/appdir -I/usr/include/appmanifest-glib -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/mdeclarativecache5 -isystem /usr/include/qt5 -isystem /usr/include/qt5/QtQuick -isystem /usr/include/qt5/QtQml -isystem /usr/include/qt5/QtNetwork -isystem /usr/include/qt5/QtCore -isystem /usr/share/qt5/mkspecs/linux-g++ -isystem /usr/include/qt5/QtGui
+  OBJECT_DIR = CMakeFiles/ru.ac.uniyar.SoundWiki.dir
+  OBJECT_FILE_DIR = CMakeFiles/ru.ac.uniyar.SoundWiki.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ru.ac.uniyar.SoundWiki
@@ -178,7 +186,7 @@ build CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/songalbum.cpp.o: CXX_COMPI
 #############################################
 # Link the executable ru.ac.uniyar.SoundWiki
 
-build ru.ac.uniyar.SoundWiki: CXX_EXECUTABLE_LINKER__ru.2eac.2euniyar.2eSoundWiki_Debug CMakeFiles/ru.ac.uniyar.SoundWiki.dir/ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/main.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/yandexmusicclient.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/song.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/models/songmodel.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/controllers/musicsearchcontroller.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/songalbum.cpp.o | /usr/lib64/libQt5Quick.so.5.6.3 /usr/lib64/libQt5Qml.so.5.6.3 /usr/lib/libQt5Network.so.5.6.3 /usr/lib/libQt5Gui.so.5.6.3 /usr/lib/libQt5Core.so.5.6.3 || ru.ac.uniyar.SoundWiki_autogen
+build ru.ac.uniyar.SoundWiki: CXX_EXECUTABLE_LINKER__ru.2eac.2euniyar.2eSoundWiki_Debug CMakeFiles/ru.ac.uniyar.SoundWiki.dir/ru.ac.uniyar.SoundWiki_autogen/mocs_compilation.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/main.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/yandexmusicclient.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/song.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/models/songmodel.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/controllers/musicsearchcontroller.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/src/types/songalbum.cpp.o CMakeFiles/ru.ac.uniyar.SoundWiki.dir/imagecachemanager.cpp.o | /usr/lib64/libQt5Quick.so.5.6.3 /usr/lib64/libQt5Qml.so.5.6.3 /usr/lib/libQt5Network.so.5.6.3 /usr/lib/libQt5Gui.so.5.6.3 /usr/lib/libQt5Core.so.5.6.3 || ru.ac.uniyar.SoundWiki_autogen
   FLAGS = -g -pipe -Wp,-U_FORTIFY_SOURCE,-D_FORTIFY_SOURCE=3 -specs=/usr/lib/rpm/aurora/pie-pic-cc1 -fstack-protector-strong --param=ssp-buffer-size=4 -fexceptions -O2 -Wall -Wformat -Wformat-security -m64 -mtune=generic -DQT_QML_DEBUG -g
   LINK_FLAGS = -Wl,--as-needed -specs=/usr/lib/rpm/aurora/pie-pic-ld -Wl,-z,relro,-z,now
   LINK_LIBRARIES = -Wl,-rpath,/usr/share/ru.ac.uniyar.SoundWiki/lib  /usr/lib64/libQt5Quick.so.5.6.3  -lauroraapp  -lappdir-cpp  -lappdir  -lappmanifest-glib  -lglib-2.0  -pie  -rdynamic  -lmdeclarativecache5  /usr/lib64/libQt5Qml.so.5.6.3  /usr/lib/libQt5Network.so.5.6.3  /usr/lib/libQt5Gui.so.5.6.3  /usr/lib/libQt5Core.so.5.6.3

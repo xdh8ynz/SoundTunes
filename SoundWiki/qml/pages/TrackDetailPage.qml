@@ -32,6 +32,8 @@ Page {
         if (isLikedTrack)
         {
             dao.deleteSong(track.songId)
+
+            imageCacheManager.clear(track.path)
         }
         else{
             dao.insertSong(
@@ -40,12 +42,15 @@ Page {
                     track.artist,
                     track.genre,
                     track.cover,
+                    track.path,
                     track.duration,
                     track.albumId,
                     track.albumName,
                     track.albumYear,
                     track.countTracks
             )
+
+            imageCacheManager.save(track.cover)
         }
         isLikedTrack = !isLikedTrack
     }
@@ -55,6 +60,20 @@ Page {
         isLoadingData = true
         isLikedTrack = dao.isSongInFavourites(track.songId);
         isLoadingData = false;
+    }
+
+    function updateImageOnDb(path)
+    {
+        dao.setPath(track.songId, path)
+        musicSearchController.updatePath(track.songId, path)
+    }
+
+    Connections {
+        target: imageCacheManager
+        onImageDownloaded:
+        {
+            updateImageOnDb(arguments[0])
+        }
     }
 
     Component.onCompleted: {
@@ -203,7 +222,7 @@ Page {
                         id: albumCover
                         width: Theme.itemSizeHuge
                         height: Theme.itemSizeHuge
-                        source: track.cover || "image://theme/icon-l-sounds"
+                        source: track.path || track.cover || "image://theme/icon-l-sounds"
                         fillMode: Image.PreserveAspectCrop
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.topMargin: Theme.paddingMedium

@@ -3,6 +3,7 @@
 
 #include "controllers/musicsearchcontroller.h"
 #include "types/song.h"
+#include "imagecachemanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<QList<Song>>("QList<Song>");
 
     qmlRegisterType<MusicSearchController>("ru.ac.uniyar", 1, 0, "MusicSearchController");
+    qmlRegisterType<ImageCacheManager>("ru.ac.uniyar", 1, 0, "ImageCacheManager");
 
     QScopedPointer<QQuickView> view(Aurora::Application::createView());
     view->setSource(Aurora::Application::pathTo(QStringLiteral("qml/SoundWiki.qml")));

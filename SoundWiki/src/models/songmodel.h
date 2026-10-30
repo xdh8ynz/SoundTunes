@@ -17,6 +17,7 @@ public:
         ArtistRole,
         GenreRole,
         CoverRole,
+        PathRole,
         AlbumIdRole,
         DurationRole,
         AlbumNameRole,
@@ -33,6 +34,7 @@ public:
 
     void clear();
     void updateSongs(QList<Song> songs);
+    bool updatePath(int songId, const QString &path);
 
 private:
     QList<Song> m_songs;

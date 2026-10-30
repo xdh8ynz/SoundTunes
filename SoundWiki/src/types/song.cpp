@@ -6,6 +6,7 @@ Song::Song()
     m_duration = -1;
     m_title = "";
     m_artist = "";
+    m_path = "";
     m_album = Album();
 }
 
@@ -20,6 +21,7 @@ Song::Song(int song_id,
     m_title = title;
     m_artist = artist;
     m_album = album;
+    m_path = "";
 }
 
 Song::~Song()
@@ -46,7 +48,17 @@ QString Song::getArtist() const
     return m_artist;
 }
 
+QString Song::getPath() const
+{
+    return m_path;
+}
+
 Album Song::getAlbum() const
 {
     return m_album;
+}
+
+void Song::updatePath(QString path)
+{
+    m_path = path;
 }

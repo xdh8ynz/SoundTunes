@@ -34,7 +34,9 @@ set(CMAKE_SKIP_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/share/${PROJECT_NAME}/lib")
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${QmFiles})
+add_executable(${PROJECT_NAME} ${SOURCES} ${QmFiles}
+    imagecachemanager.h imagecachemanager.cpp
+)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
 )

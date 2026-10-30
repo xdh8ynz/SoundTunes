@@ -11,4 +11,8 @@ ApplicationWindow {
     MusicSearchController {
         id: musicSearchController
     }
+
+    ImageCacheManager{
+        id: imageCacheManager
+    }
 }
