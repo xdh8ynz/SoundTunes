@@ -37,6 +37,21 @@ void ImageCacheManager::requestImage(QString url)
     m_manager->get(request);
 }
 
+QString ImageCacheManager::getExtension(QString contentType)
+{
+    if (contentType.contains("jpeg") || contentType.contains("jpg"))
+    {
+        return ".jpg";
+    }
+    else if (contentType.contains("webp"))
+    {
+        return ".webp";
+    }
+    else{
+        return  ".png";
+    }
+}
+
 void ImageCacheManager::download(QNetworkReply *reply)
 {
     if (reply->error() != QNetworkReply::NetworkError::NoError)
@@ -46,25 +61,11 @@ void ImageCacheManager::download(QNetworkReply *reply)
         return;
     }
 
-    QByteArray image = reply->readAll();
-
     QString contentType = reply->header(QNetworkRequest::ContentTypeHeader)
                               .toString()
                               .toLower();
 
-    QString extension = "";
-
-    if (contentType.contains("jpeg") || contentType.contains("jpg"))
-    {
-        extension = ".jpg";
-    }
-    else if (contentType.contains("webp"))
-    {
-        extension = ".webp";
-    }
-    else{
-        extension = ".png";
-    }
+    QString extension = getExtension(contentType);
 
     QString localPath = generateFileName(reply->request().url().toString(), extension);
     QString absolutePath = QDir(m_cache_directory).filePath(localPath);
@@ -72,10 +73,12 @@ void ImageCacheManager::download(QNetworkReply *reply)
     QFile file(absolutePath);
     if (!file.open(QIODevice::ReadWrite))
     {
-        qDebug() << "Не удалось сохранить изображение в файл: "
+        qDebug() << "Не удалось создать файл: "
                  << absolutePath;
         return;
     }
+
+    QByteArray image = reply->readAll();
 
     file.write(image);
     file.close();
@@ -87,5 +90,6 @@ void ImageCacheManager::download(QNetworkReply *reply)
 QString ImageCacheManager::generateFileName(QString url, QString extension)
 {
     QByteArray hash = QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5);
-    return QString(hash.toHex()) + extension;
+    QString timestamp = QString::number(QDateTime::currentMSecsSinceEpoch());
+    return QString::fromLatin1(hash.toHex()) + "_" + timestamp + ".jpg";
 }

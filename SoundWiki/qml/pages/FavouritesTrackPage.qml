@@ -137,7 +137,11 @@ Page {
                 }
 
                 onStatusChanged: {
-                    if (status === Image.Error)
+                    if (status === Image.Error && source === model.path)
+                    {
+                        source = track.cover
+                    }
+                    else if (status === Image.Error && source === model.cover)
                     {
                         source = "image://theme/icon-l-sound"
                     }

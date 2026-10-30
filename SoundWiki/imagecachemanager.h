@@ -29,6 +29,7 @@ private:
 
     void requestImage(QString url);
     QString generateFileName(QString url, QString extension);
+    QString getExtension(QString contentType);
 };
 
 #endif // IMAGECACHEMANAGER_H
