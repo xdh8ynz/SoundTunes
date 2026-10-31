@@ -95,5 +95,5 @@ QString ImageCacheManager::generateFileName(QString url, QString extension)
 {
     QByteArray hash = QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5);
     QString timestamp = QString::number(QDateTime::currentMSecsSinceEpoch());
-    return QString::fromLatin1(hash.toHex()) + "_" + timestamp + ".jpg";
+    return QString::fromLatin1(hash.toHex()) + "_" + timestamp + extension;
 }
