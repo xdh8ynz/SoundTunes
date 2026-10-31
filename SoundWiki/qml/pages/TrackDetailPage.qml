@@ -50,7 +50,7 @@ Page {
                     track.countTracks
             )
 
-            imageCacheManager.save(track.cover)
+            imageCacheManager.save(track.cover, track.songId)
         }
 
         isLikedTrack = !isLikedTrack
@@ -64,17 +64,21 @@ Page {
         isLoadingData = false;
     }
 
-    function updateImageOnDb(path)
+    function updateImageOnDb(path, songId)
     {
-        dao.setPath(track.songId, path)
-        musicSearchController.updatePath(track.songId, path)
+        dao.setPath(songId, path)
+        musicSearchController.updatePath(songId, path)
     }
 
     Connections {
         target: imageCacheManager
         onImageDownloaded:
         {
-            updateImageOnDb(arguments[0])
+            console.log("ПАРАМЕТРЫ")
+            console.log(arguments[0])
+            console.log(arguments[1])
+
+            updateImageOnDb(arguments[0], arguments[1])
         }
     }
 

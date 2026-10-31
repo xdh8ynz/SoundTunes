@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ImageCacheManager_t {
-    QByteArrayData data[10];
-    char stringdata0[85];
+    QByteArrayData data[11];
+    char stringdata0[92];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,17 +33,18 @@ QT_MOC_LITERAL(0, 0, 17), // "ImageCacheManager"
 QT_MOC_LITERAL(1, 18, 15), // "imageDownloaded"
 QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 4), // "path"
-QT_MOC_LITERAL(4, 40, 8), // "download"
-QT_MOC_LITERAL(5, 49, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(6, 64, 5), // "reply"
-QT_MOC_LITERAL(7, 70, 4), // "save"
-QT_MOC_LITERAL(8, 75, 3), // "url"
-QT_MOC_LITERAL(9, 79, 5) // "clear"
+QT_MOC_LITERAL(4, 40, 6), // "songId"
+QT_MOC_LITERAL(5, 47, 8), // "download"
+QT_MOC_LITERAL(6, 56, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(7, 71, 5), // "reply"
+QT_MOC_LITERAL(8, 77, 4), // "save"
+QT_MOC_LITERAL(9, 82, 3), // "url"
+QT_MOC_LITERAL(10, 86, 5) // "clear"
 
     },
     "ImageCacheManager\0imageDownloaded\0\0"
-    "path\0download\0QNetworkReply*\0reply\0"
-    "save\0url\0clear"
+    "path\0songId\0download\0QNetworkReply*\0"
+    "reply\0save\0url\0clear"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,23 +62,23 @@ static const uint qt_meta_data_ImageCacheManager[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x06 /* Public */,
+       1,    2,   34,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    1,   37,    2, 0x08 /* Private */,
+       5,    1,   39,    2, 0x08 /* Private */,
 
  // methods: name, argc, parameters, tag, flags
-       7,    1,   40,    2, 0x02 /* Public */,
-       9,    1,   43,    2, 0x02 /* Public */,
+       8,    2,   42,    2, 0x02 /* Public */,
+      10,    1,   47,    2, 0x02 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,    4,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void, 0x80000000 | 6,    7,
 
  // methods: parameters
-    QMetaType::Void, QMetaType::QString,    8,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,    9,    4,
     QMetaType::Void, QMetaType::QString,    3,
 
        0        // eod
@@ -89,9 +90,9 @@ void ImageCacheManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         ImageCacheManager *_t = static_cast<ImageCacheManager *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->imageDownloaded((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 0: _t->imageDownloaded((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const int(*)>(_a[2]))); break;
         case 1: _t->download((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 2: _t->save((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->save((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 3: _t->clear((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
@@ -110,7 +111,7 @@ void ImageCacheManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (ImageCacheManager::*_t)(const QString & );
+            typedef void (ImageCacheManager::*_t)(const QString & , const int & );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ImageCacheManager::imageDownloaded)) {
                 *result = 0;
                 return;
@@ -156,9 +157,9 @@ int ImageCacheManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void ImageCacheManager::imageDownloaded(const QString & _t1)
+void ImageCacheManager::imageDownloaded(const QString & _t1, const int & _t2)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

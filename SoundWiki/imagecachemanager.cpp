@@ -17,9 +17,12 @@ ImageCacheManager::~ImageCacheManager()
 
 }
 
-void ImageCacheManager::save(QString url)
+void ImageCacheManager::save(QString url, int songId)
 {
-    requestImage(url);
+    QNetworkRequest request;
+    request.setUrl(url);
+    request.setAttribute(QNetworkRequest::User, songId);
+    m_manager->get(request);
 }
 
 void ImageCacheManager::clear(QString path)
@@ -28,13 +31,6 @@ void ImageCacheManager::clear(QString path)
     {
         QFile::remove(path);
     }
-}
-
-void ImageCacheManager::requestImage(QString url)
-{
-    QNetworkRequest request;
-    request.setUrl(url);
-    m_manager->get(request);
 }
 
 QString ImageCacheManager::getExtension(QString contentType)
@@ -61,6 +57,14 @@ void ImageCacheManager::download(QNetworkReply *reply)
         return;
     }
 
+    int songId = reply->request().attribute(QNetworkRequest::User).toInt();
+
+    if (!songId)
+    {
+        qDebug() << "Не удалось извлечь идентификатор песни из ответа: ";
+        return;
+    }
+
     QString contentType = reply->header(QNetworkRequest::ContentTypeHeader)
                               .toString()
                               .toLower();
@@ -83,8 +87,8 @@ void ImageCacheManager::download(QNetworkReply *reply)
     file.write(image);
     file.close();
 
-    qDebug() << "Изображение сохранено по пути: " + absolutePath;
-    imageDownloaded(absolutePath);
+    qDebug() << "Изображение сохранено по пути: " + absolutePath + " для песни: " + songId;
+    emit imageDownloaded(absolutePath, songId);
 }
 
 QString ImageCacheManager::generateFileName(QString url, QString extension)
