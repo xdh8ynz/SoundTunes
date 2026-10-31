@@ -33,7 +33,7 @@ private slots:
 private:
     static constexpr int MaxCountSongsInList = 20;
     static constexpr int CoverSize = 600;
-    static constexpr int SearchIntervalMs = 2000;
+    static constexpr int SearchIntervalMs = 10000;
     static constexpr int MinNetworkCode = 0;
     static constexpr int MaxNetworkCode = 99;
     static constexpr int MinServerCode = 401;

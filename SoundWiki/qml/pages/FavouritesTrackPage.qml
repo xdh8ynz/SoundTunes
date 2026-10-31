@@ -44,10 +44,15 @@ Page {
         isLoadingTracks = false
     }
 
-    function removeTrack(index, id, path)
+    function removeTrack(id, path)
     {
-        dao.deleteSong(id)
-        trackModel.remove(index)
+        for (var i = 0; i < trackModel.count; ++i) {
+            if (trackModel.get(i).songId === id) {
+                trackModel.remove(i);
+                break;
+            }
+        }
+        dao.deleteSong(id);
         imageCacheManager.clear(path);
     }
 
@@ -94,7 +99,7 @@ Page {
                 text: qsTr("Delete")
                 onClicked: {
                     remorse.execute("Are you sure you want to remove track?",
-                    function() { removeTrack(model.index, model.songId, model.path) }
+                    function() { removeTrack(model.songId, model.path) }
                 )
             }
         }
