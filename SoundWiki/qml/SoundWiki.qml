@@ -15,4 +15,22 @@ ApplicationWindow {
     ImageCacheManager{
         id: imageCacheManager
     }
+
+    Dao { id: rootDao }
+
+    Connections {
+        target: imageCacheManager
+
+        onImageDownloaded: {
+            var path = arguments[0]
+            var songId = arguments[1]
+
+            if (rootDao.isSongInFavourites(songId)) {
+                rootDao.setPath(songId, path)
+                musicSearchController.updatePath(songId, path)
+            } else {
+                imageCacheManager.clear(path)
+            }
+        }
+    }
 }

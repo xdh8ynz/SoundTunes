@@ -31,9 +31,9 @@ Page {
     {
         if (isLikedTrack)
         {
+            var savedPath = dao.getPath(track.songId) || track.path
             dao.deleteSong(track.songId)
-
-            imageCacheManager.clear(track.path)
+            imageCacheManager.clear(savedPath)
         }
         else{
             dao.insertSong(
@@ -62,24 +62,6 @@ Page {
         isLoadingData = true
         isLikedTrack = dao.isSongInFavourites(track.songId);
         isLoadingData = false;
-    }
-
-    function updateImageOnDb(path, songId)
-    {
-        dao.setPath(songId, path)
-        musicSearchController.updatePath(songId, path)
-    }
-
-    Connections {
-        target: imageCacheManager
-        onImageDownloaded:
-        {
-            console.log("ПАРАМЕТРЫ")
-            console.log(arguments[0])
-            console.log(arguments[1])
-
-            updateImageOnDb(arguments[0], arguments[1])
-        }
     }
 
     Component.onCompleted: {
@@ -241,7 +223,7 @@ Page {
                         }
 
                         Timer {
-                            interval: 1000
+                            interval: 10000
                             running: albumCover.status === Image.Loading
                             onTriggered: {
                                 if (albumCover.status === Image.Loading) {
@@ -252,11 +234,13 @@ Page {
                         }
 
                         onStatusChanged: {
-                            if (status === Image.Error && source === track.path)
+                            if (status === Image.Error &&
+                                    String(source) === String(Qt.resolvedUrl(track.path)))
                             {
                                 source = track.cover
                             }
-                            else if (status === Image.Error && source === track.cover)
+                            else if (status === Image.Error &&
+                                     String(source) === String(Qt.resolvedUrl(track.cover)))
                             {
                                 source = "image://theme/icon-l-sound"
                             }

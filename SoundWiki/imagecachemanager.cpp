@@ -19,14 +19,22 @@ ImageCacheManager::~ImageCacheManager()
 
 void ImageCacheManager::save(QString url, int songId)
 {
-    QNetworkRequest request;
-    request.setUrl(url);
-    request.setAttribute(QNetworkRequest::User, songId);
-    m_manager->get(request);
+    if (!url.isEmpty())
+    {
+        QNetworkRequest request;
+        request.setUrl(url);
+        request.setAttribute(QNetworkRequest::User, songId);
+        m_manager->get(request);
+    }
 }
 
 void ImageCacheManager::clear(QString path)
 {
+    if (path.isEmpty())
+    {
+        return;
+    }
+
     if (QFile::exists(path))
     {
         QFile::remove(path);
@@ -50,6 +58,8 @@ QString ImageCacheManager::getExtension(QString contentType)
 
 void ImageCacheManager::download(QNetworkReply *reply)
 {
+    reply->deleteLater();
+
     if (reply->error() != QNetworkReply::NetworkError::NoError)
     {
         qDebug() << "Не удалось загрузить изображение: "
@@ -75,7 +85,7 @@ void ImageCacheManager::download(QNetworkReply *reply)
     QString absolutePath = QDir(m_cache_directory).filePath(localPath);
 
     QFile file(absolutePath);
-    if (!file.open(QIODevice::ReadWrite))
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
         qDebug() << "Не удалось создать файл: "
                  << absolutePath;

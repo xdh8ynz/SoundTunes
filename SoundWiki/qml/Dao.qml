@@ -63,6 +63,19 @@ QtObject {
         });
     }
 
+    function getPath(id)
+    {
+        var path = "";
+
+        db.readTransaction(function(tx) {
+            var result = tx.executeSql("SELECT path FROM song WHERE id = ?", [id]);
+            if (result.rows.length > 0)
+                path = result.rows.item(0).path || "";
+        });
+
+        return path;
+    }
+
     function setPath(id, path)
     {
         db.transaction(function (tx) {

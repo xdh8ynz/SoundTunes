@@ -126,7 +126,7 @@ Page {
                 }
 
                 Timer {
-                    interval: 1000
+                    interval: 10000
                     running: trackCover.status === Image.Loading
                     onTriggered: {
                         if (trackCover.status === Image.Loading) {
@@ -137,11 +137,13 @@ Page {
                 }
 
                 onStatusChanged: {
-                    if (status === Image.Error && source === model.path)
+                    if (status === Image.Error &&
+                            String(source) === String(Qt.resolvedUrl(model.path)))
                     {
                         source = model.cover
                     }
-                    else if (status === Image.Error && source === model.cover)
+                    else if (status === Image.Error &&
+                             String(source) === String(Qt.resolvedUrl(model.cover)))
                     {
                         source = "image://theme/icon-l-sound"
                     }
