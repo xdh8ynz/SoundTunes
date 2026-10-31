@@ -16,7 +16,7 @@ ApplicationWindow {
         id: imageCacheManager
     }
 
-    Dao { id: rootDao }
+    Dao { id: dao }
 
     Connections {
         target: imageCacheManager
@@ -25,8 +25,7 @@ ApplicationWindow {
             var path = arguments[0]
             var songId = arguments[1]
 
-            if (rootDao.isSongInFavourites(songId)) {
-                rootDao.setPath(songId, path)
+            if (dao.setPathIfExists(songId, path)) {
                 musicSearchController.updatePath(songId, path)
             } else {
                 imageCacheManager.clear(path)

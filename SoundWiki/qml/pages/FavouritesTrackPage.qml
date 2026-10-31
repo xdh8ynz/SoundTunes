@@ -56,10 +56,6 @@ Page {
         imageCacheManager.clear(path);
     }
 
-    Dao {
-        id: dao
-    }
-
     ListModel {
         id: trackModel
     }
@@ -123,6 +119,8 @@ Page {
                 fillMode: Image.PreserveAspectCrop
                 anchors.verticalCenter: parent.verticalCenter
                 asynchronous: true
+                sourceSize.width: width * 2
+                sourceSize.height: height * 2
 
                 BusyIndicator{
                     id: indicator

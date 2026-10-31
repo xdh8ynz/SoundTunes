@@ -17,6 +17,12 @@ ImageCacheManager::~ImageCacheManager()
 
 }
 
+bool ImageCacheManager::isCached(QString path)
+{
+    QFileInfo info(path);
+    return info.exists();
+}
+
 void ImageCacheManager::save(QString url, int songId)
 {
     if (!url.isEmpty())

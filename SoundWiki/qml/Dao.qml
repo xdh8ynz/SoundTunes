@@ -76,11 +76,17 @@ QtObject {
         return path;
     }
 
-    function setPath(id, path)
+    function setPathIfExists(id, path)
     {
-        db.transaction(function (tx) {
-            tx.executeSql("UPDATE song SET path = ? WHERE id = ?;", [path, id])
+        var updated = false;
+
+        db.transaction(function(tx) {
+            var result = tx.executeSql(
+                "UPDATE song SET path = ? WHERE id = ?", [path, id]);
+            updated = result.rowsAffected > 0;
         });
+
+        return updated;
     }
 
     function resetDatabase() {

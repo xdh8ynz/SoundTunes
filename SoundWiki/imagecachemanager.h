@@ -16,6 +16,7 @@ public:
 
     Q_INVOKABLE void save(QString url, int songId);
     Q_INVOKABLE void clear(QString path);
+    Q_INVOKABLE bool isCached(QString path);
 
 signals:
     void imageDownloaded(const QString &path, const int &songId);

@@ -182,6 +182,8 @@ Page {
                 source: model.cover || "image://theme/icon-l-sound"
                 fillMode: Image.PreserveAspectCrop
                 anchors.verticalCenter: parent.verticalCenter
+                sourceSize.width: width * 2
+                sourceSize.height: height * 2
                 asynchronous: true
 
                 BusyIndicator{

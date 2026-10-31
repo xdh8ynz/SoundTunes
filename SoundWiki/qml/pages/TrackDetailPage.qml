@@ -27,6 +27,20 @@ Page {
         return minutesStr + ":" + secondsStr
     }
 
+    function checkTrackInDatabase()
+    {
+        isLoadingData = true
+        isLikedTrack = dao.isSongInFavourites(track.songId)
+
+        if (isLikedTrack)
+        {
+            var path = dao.getPath(track.songId)
+            if (path === "" || !imageCacheManager.isCached(path))
+                imageCacheManager.save(track.cover, track.songId)
+        }
+        isLoadingData = false
+    }
+
     function changeStatusTrack()
     {
         if (isLikedTrack)
@@ -54,22 +68,10 @@ Page {
         }
 
         isLikedTrack = !isLikedTrack
-        pageStack.pop()
-    }
-
-    function checkTrackInDatabase()
-    {
-        isLoadingData = true
-        isLikedTrack = dao.isSongInFavourites(track.songId);
-        isLoadingData = false;
     }
 
     Component.onCompleted: {
         checkTrackInDatabase();
-    }
-
-    Dao {
-        id: dao
     }
 
     AppBar {
@@ -215,6 +217,8 @@ Page {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.topMargin: Theme.paddingMedium
                         asynchronous: true
+                        sourceSize.width: width * 2
+                        sourceSize.height: height * 2
 
                         BusyIndicator{
                             id: indicator
