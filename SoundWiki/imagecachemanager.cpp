@@ -8,6 +8,8 @@
 ImageCacheManager::ImageCacheManager(QObject *parent)
     : QObject{parent}
 {
+    QDir().mkpath(m_cache_directory);
+
     m_manager.reset(new QNetworkAccessManager());
     connect(m_manager.get(), &QNetworkAccessManager::finished, this, &ImageCacheManager::download);
 }
@@ -20,18 +22,28 @@ ImageCacheManager::~ImageCacheManager()
 bool ImageCacheManager::isCached(QString path)
 {
     QFileInfo info(path);
-    return info.exists();
+    return !path.isEmpty() && info.exists() && info.size() > 0;
 }
 
 void ImageCacheManager::save(QString url, int songId)
 {
-    if (!url.isEmpty())
+    if (url.isEmpty())
+        return;
+
+    const QString key = QUrl(url).toString();
+    const QString absolutePath =
+        QDir(m_cache_directory).filePath(generateFileName(key));
+
+    if (isCached(absolutePath))
     {
-        QNetworkRequest request;
-        request.setUrl(url);
-        request.setAttribute(QNetworkRequest::User, songId);
-        m_manager->get(request);
+        emit imageDownloaded(absolutePath, songId);
+        return;
     }
+
+    QNetworkRequest request;
+    request.setUrl(key);
+    request.setAttribute(QNetworkRequest::User, songId);
+    m_manager->get(request);
 }
 
 void ImageCacheManager::clear(QString path)
@@ -44,21 +56,6 @@ void ImageCacheManager::clear(QString path)
     if (QFile::exists(path))
     {
         QFile::remove(path);
-    }
-}
-
-QString ImageCacheManager::getExtension(QString contentType)
-{
-    if (contentType.contains("jpeg") || contentType.contains("jpg"))
-    {
-        return ".jpg";
-    }
-    else if (contentType.contains("webp"))
-    {
-        return ".webp";
-    }
-    else{
-        return  ".png";
     }
 }
 
@@ -81,14 +78,16 @@ void ImageCacheManager::download(QNetworkReply *reply)
         return;
     }
 
-    QString contentType = reply->header(QNetworkRequest::ContentTypeHeader)
-                              .toString()
-                              .toLower();
+    const QString key = reply->request().url().toString();
+    const QString absolutePath =
+        QDir(m_cache_directory).filePath(generateFileName(key));
 
-    QString extension = getExtension(contentType);
 
-    QString localPath = generateFileName(reply->request().url().toString(), extension);
-    QString absolutePath = QDir(m_cache_directory).filePath(localPath);
+    if (isCached(absolutePath))
+    {
+        emit imageDownloaded(absolutePath, songId);
+        return;
+    }
 
     QFile file(absolutePath);
     if (!file.open(QIODevice::ReadWrite | QIODevice::Truncate))
@@ -100,16 +99,29 @@ void ImageCacheManager::download(QNetworkReply *reply)
 
     QByteArray image = reply->readAll();
 
-    file.write(image);
-    file.close();
+    if (image.isEmpty())
+    {
+        file.close();
+        file.remove();
+        return;
+    }
 
-    qDebug() << "Изображение сохранено по пути: " + absolutePath + " для песни: " + songId;
+    if (file.write(image) != image.size())
+    {
+        file.close();
+        file.remove();
+        return;
+    }
+
+    file.close();
+    qDebug() << "Изображение сохранено по пути:"
+             << absolutePath << "для песни:" << songId;
+
     emit imageDownloaded(absolutePath, songId);
 }
 
-QString ImageCacheManager::generateFileName(QString url, QString extension)
+QString ImageCacheManager::generateFileName(QString url)
 {
     QByteArray hash = QCryptographicHash::hash(url.toUtf8(), QCryptographicHash::Md5);
-    QString timestamp = QString::number(QDateTime::currentMSecsSinceEpoch());
-    return QString::fromLatin1(hash.toHex()) + "_" + timestamp + extension;
+    return QString::fromLatin1(hash.toHex());
 }

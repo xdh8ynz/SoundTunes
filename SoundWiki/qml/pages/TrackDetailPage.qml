@@ -38,6 +38,7 @@ Page {
             if (path === "" || !imageCacheManager.isCached(path))
                 imageCacheManager.save(track.cover, track.songId)
         }
+
         isLoadingData = false
     }
 
@@ -45,9 +46,8 @@ Page {
     {
         if (isLikedTrack)
         {
-            var savedPath = dao.getPath(track.songId) || track.path
-            dao.deleteSong(track.songId)
-            imageCacheManager.clear(savedPath)
+            var pathToRemove = dao.deleteSong(track.songId)
+            imageCacheManager.clear(pathToRemove)
         }
         else{
             dao.insertSong(

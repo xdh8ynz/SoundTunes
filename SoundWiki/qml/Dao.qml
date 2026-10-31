@@ -58,9 +58,42 @@ QtObject {
 
     function deleteSong(id)
     {
-        db.transaction(function (tx) {
-            tx.executeSql("DELETE FROM song WHERE id = ?;", [id])
+        var pathToRemove = "";
+
+        db.transaction(function(tx) {
+            var result = tx.executeSql("SELECT path FROM song WHERE id = ?", [id]);
+            var path = result.rows.length > 0
+                     ? (result.rows.item(0).path || "")
+                     : "";
+
+            tx.executeSql("DELETE FROM song WHERE id = ?", [id]);
+
+            if (path !== "") {
+                var usage = tx.executeSql(
+                    "SELECT COUNT(*) AS cnt FROM song WHERE path = ?", [path]);
+
+                if (usage.rows.item(0).cnt === 0)
+                    pathToRemove = path;
+            }
         });
+
+        return pathToRemove;
+    }
+
+    function isPathUsed(path)
+    {
+        if (path === "")
+            return false;
+
+        var used = false;
+
+        db.readTransaction(function(tx) {
+            var result = tx.executeSql(
+                "SELECT COUNT(*) AS cnt FROM song WHERE path = ?", [path]);
+            used = result.rows.item(0).cnt > 0;
+        });
+
+        return used;
     }
 
     function getPath(id)

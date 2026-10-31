@@ -52,8 +52,9 @@ Page {
                 break;
             }
         }
-        dao.deleteSong(id);
-        imageCacheManager.clear(path);
+
+        var pathToRemove = dao.deleteSong(id)
+        imageCacheManager.clear(pathToRemove)
     }
 
     ListModel {
@@ -94,9 +95,9 @@ Page {
             MenuItem {
                 text: qsTr("Delete")
                 onClicked: {
-                    remorse.execute("Are you sure you want to remove track?",
-                    function() { removeTrack(model.songId, model.path) }
-                )
+                    var songId = model.songId
+                     remorse.execute("Are you sure you want to remove track?",
+                         function() { removeTrack(songId) })
             }
         }
     }

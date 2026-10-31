@@ -27,8 +27,7 @@ private slots:
 private:
     std::unique_ptr<QNetworkAccessManager> m_manager;
     QString m_cache_directory = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-    QString generateFileName(QString url, QString extension);
-    QString getExtension(QString contentType);
+    QString generateFileName(QString url);
 };
 
 #endif // IMAGECACHEMANAGER_H

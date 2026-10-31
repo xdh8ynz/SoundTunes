@@ -27,7 +27,7 @@ ApplicationWindow {
 
             if (dao.setPathIfExists(songId, path)) {
                 musicSearchController.updatePath(songId, path)
-            } else {
+            } else if (!dao.isPathUsed(path)) {
                 imageCacheManager.clear(path)
             }
         }
