@@ -1,0 +1,6 @@
+# Build output
+SoundWiki/build/
+build/
+
+# Qt Creator
+CMakeLists.txt.user*

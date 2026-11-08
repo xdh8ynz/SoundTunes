@@ -1,9 +1,0 @@
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/install/local.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/install.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/list_install_components.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/rebuild_cache.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/edit_cache.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/distfiles.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/install/strip.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/ru.ac.uniyar.SoundWiki.dir
-/workspace/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/CMakeFiles/ru.ac.uniyar.SoundWiki_autogen.dir

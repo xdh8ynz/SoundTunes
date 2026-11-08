@@ -1,2 +1,0 @@
-/usr
-/home/asus/SoundWiki/SoundWiki/build/AuroraOS_5_2_1_200_5_2_1_200_x86_64-Debug/ru.ac.uniyar.SoundWiki:bin
